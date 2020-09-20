@@ -9,4 +9,4 @@ Milestones (Sprints):
 		- Y
 		- etc
 
-The total number of story points for this Spring is [Point Sum].
+The total number of story points for this Sprint is [Point Sum].
