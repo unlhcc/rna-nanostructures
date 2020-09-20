@@ -1,7 +1,9 @@
 Issue Requirements (User Stories):
 1. Relevant Issue Labels
 2. Story Description Convention:
-	- Anticipated Requirements: [Issue numbers of other stories]
+	- Elaboration of the issue.
+	- Anticipated Requirements: [Issue numbers of other stories] or Dependencies.
+	- Link to Requirements Document
 	- Any notes that the title doesn't convey.
 4. Title:
 	- Product Requirements:
