@@ -17,9 +17,11 @@ Sample Issue:
 
 
 Title:
+
 As a User, I want to log in to the RNA Nanostructures Science Gateway using my University credentials, so that I can access the RNA Scaffolding Application.
 
 Labels:
+
 User Story, User Interface
 
 Description:
