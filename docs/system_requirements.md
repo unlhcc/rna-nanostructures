@@ -1,7 +1,7 @@
 ## System Requirements
 ***The RNA Nanostructures Science Gateway shall be referred to as "the system" for the remainder of this document.***
 
-#### User-Interface Requirements
+### User-Interface Requirements
 
 1.  The User-Interface (UI) shall be implemented using the Airavata Django Portal, a web interface to the Apache Airavata API.
 2.  The UI shall provide a landing page.
@@ -48,40 +48,40 @@
             16. View recent notifications
             17. Email Settings
 
-#### RNA Scaffolding Application Requirements
-1.  The RNA Scaffolding Application shall be referred to as "the application".
-2.  The application shall be integrated into the UI.
+### RNA Scaffolding Application Requirements
+*The RNA Scaffolding Application shall be referred to as "the application".*
+1.  The application shall be integrated into the UI.
     1.  The application shall be implemented using Python3.
-3.  The application shall require a user to submit a PDB file.
+2.  The application shall require a user to submit a PDB file.
     1.  The application shall verify the integrity of the PDB file.
         1.  The application shall verify the integrity the validity of the PDB file according to the following criteria:
             1.  Filetype ( .pdb)
             2.  Verify by content (ask Joseph about how he does it).
             3.  The PDB file shall be composed of the base pairs to build the RNA 3D scaffold from.
-4.  The application shall require a User to enter the starting base pair.
+3.  The application shall require a User to enter the starting base pair.
     1.  The starting base pair shall be provided by the User through a text box.
-5.  The application shall require a User to enter the end base pair.
+4.  The application shall require a User to enter the end base pair.
     1.  The end base pair shall be provided by the User through a text box.
-6. The application shall require a User to enter the number of designs.
+5. The application shall require a User to enter the number of designs.
     1.  The number of pairs shall be provided by the User through a text box.
-7. The application shall process the User-provided PDB file using the Design RNA Scaffold application available through RNA Make.
-8. The application shall return the a PDB file provided by the Design RNA Scaffold application.
+6. The application shall process the User-provided PDB file using the Design RNA Scaffold application available through RNA Make.
+7. The application shall return the a PDB file provided by the Design RNA Scaffold application.
     1.  The returned PDB file shall be downloadable by the User.
     2.  The PDB shall be rendered using JSMol.
         1.  The rendering shall be embedded within the application.
         2.  The rendering shall be viewable in "cartoon" mode.
         3.  The new scaffold built from RNAMake will be highlighted.
-9. The application shall return a CSV file provided by the Design RNA Scaffold Application.
+8. The application shall return a CSV file provided by the Design RNA Scaffold Application.
     1.  The CSV file shall be displayed in the form of a table.
         1.  The table shall be embedded within the application.
 
-#### Airavata Extension Requirements
+### Airavata Extension Requirements
 1.  The Airavata API shall be extended to support job scheduling through HTCondor.
 2.  The Airavata API shall be extended to  enable users to submit jobs on the Open Science Grid.
 3.  The Airavata API shall be extended to incorporate a Groovy template for HTCondor.
 4.  The Airavata API shall be extended to include an HTCondor command map.
 
-#### Django Extension Requirements
+### Django Extension Requirements
 1.  Be able to send an email to the User.
     1.  The email shall be sent to the email address associated with their account.
     2.  The Django Extension shall be able to send Job Completion emails.
