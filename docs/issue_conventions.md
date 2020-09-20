@@ -1,10 +1,8 @@
 Issue Requirements (User Stories):
 1. Relevant Issue Labels
-2. Issue Numbers
-	- [Relevant Tag:Issue Number]
-3. Story Description Convention:
-	- Contain Labels
-	- Anticipated Requirements: [Issue numbers of other stories] (Dependencies?)(presumably)(OK)
+2. Story Description Convention:
+	- Anticipated Requirements: [Issue numbers of other stories]
+	- Any notes that the title doesn't convey.
 4. Title:
 	- Product Requirements:
 		- As a User, I want (product requirement), so that it (product justification).
