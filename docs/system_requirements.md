@@ -63,7 +63,7 @@
 4.  The application shall require a User to enter the end base pair.
     1.  The end base pair shall be provided by the User through a text box.
 5. The application shall require a User to enter the number of designs.
-    1.  The number of pairs shall be provided by the User through a text box.
+    1.  The number of designs shall be provided by the User through a text box.
 6. The application shall process the User-provided PDB file using the Design RNA Scaffold application available through RNA Make.
 7. The application shall return the a PDB file provided by the Design RNA Scaffold application.
     1.  The returned PDB file shall be downloadable by the User.
