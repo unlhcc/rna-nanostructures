@@ -2,21 +2,21 @@
 
 -   September 17 - September 30
 
--   System requirements, project workflow, system diagram
+-   System requirements, project workflow, framework
 
 **Release Two:**
 
 -   October 15 - October 28
 
--   Team One: Airavata, HTCondor Support Implementation
+-   Team One: Airavata HTCondor Support Implementation
 
--   Team Two: Django Application Wireframe, Django Application User-Tests, Django Application mockup
+-   Team Two: Django Application and Landing page wireframes, Django Application and Landing page User-Tests, Django Application and Landing page mockups
 
 **Release Three:**
 
 -   November 12 - November 25
 
--   Team One: Integration of the Airavata API extension into the Airavata Django Portal
+-   Team One: Airavata HTCondor Support Pull Request, Integration of the Airavata API extension into the Airavata Django Portal
 
 -   Team Two: Django Application Prototype
 
