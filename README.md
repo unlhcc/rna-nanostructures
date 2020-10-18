@@ -1,5 +1,7 @@
 # RNA Nanostructures
 
+[![Build Status](https://travis-ci.com/cseseniordesign/rna-nanostructures.svg?token=GyxBaHowSQZVT6GXDdci&branch=master)](https://travis-ci.com/cseseniordesign/rna-nanostructures)
+
 Visit the [Wiki](https://github.com/cseseniordesign/rna-nanostructures/wiki) for more information.
 
 # Apache Airavata Django Portal
