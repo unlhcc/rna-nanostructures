@@ -1,10 +1,10 @@
-**Release One:**
+**Release One: Completed**
 
 -   September 17 - September 30
 
 -   System requirements, project workflow, framework
 
-**Release Two:**
+**Release Two: Completed**
 
 -   October 15 - October 28
 
@@ -16,23 +16,25 @@
 
 -   November 12 - November 25
 
--   Team One: Airavata HTCondor Support Pull Request, Integration of the Airavata API extension into the Airavata Django Portal
+-   Release Meeting: November 24, 2020
 
--   Team Two: Django Application Prototype
+-   Team One: Airavata HTCondor Support Pull Request, Airavata HTCondor Extension testing
+
+-   Team Two: Completed Django Landing Page
 
 **Release Four:**
 
 -   February 8 - February 19
 
--   Team One: Integration of the Airavata Django Portal extension into the current workflow
+-   Team One: Test the integration of the Airavata HTCondor extension in the Django Portal
 
--   Team Two: Finalize Django Application
+-   Team Two: Completed Django Application Prototype
 
 **Release Five:**
 
 -   March 8 - March 19
 
--   Completed User-test, Completed application, and test cases
+-   Completed Finalize the Django Application, validate test cases, make final changes to the application according to sponsor feedback
 
 **Release Six:**
 
