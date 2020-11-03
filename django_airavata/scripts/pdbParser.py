@@ -1,8 +1,11 @@
-
-from Bio.PDB.PDBParser import PDBParser
+import Bio.PDB
+from PDBParser.myPDBParser import PDBParser
+import sys
+#sys.path.insert(1,'/PDBParser')
+#import PDBParser.py
 def validate_pdb(file_name):
     try:
-        parser = PDBParser(PERMISSIVE=False)
+        parser = PDBParser(PERMISSIVE=0)
         structure_id = "1fat"
         filename  = file_name
         structure = parser.get_structure(structure_id,filename)
@@ -16,8 +19,9 @@ def validate_pdb(file_name):
         
         return True
 
-    except:
+    except (Exception) as e:
         print("File contains irregularities, Running with permissive mode.")
+        print(e)
         try:
             parser = PDBParser(PERMISSIVE=1)
             structure_id = "1fat"
