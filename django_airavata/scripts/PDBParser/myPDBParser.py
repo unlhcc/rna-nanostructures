@@ -23,7 +23,7 @@ from Bio.PDB.PDBExceptions import PDBConstructionException
 from Bio.PDB.PDBExceptions import PDBConstructionWarning
 
 from Bio.PDB.StructureBuilder import StructureBuilder
-from Bio.PDB.parse_pdb_header import _parse_pdb_header_list
+#from Bio.PDB.parse_pdb_header import _parse_pdb_header_list
 
 
 # If PDB spec says "COLUMNS 18-20" this means line[17:20]
@@ -35,10 +35,7 @@ class PDBParser:
     def __init__(
         self,
         PERMISSIVE=True,
-        get_header=False,
-        structure_builder=None,
-        QUIET=False,
-        is_pqr=False,
+        structure_builder=None
     ):
         """Create a PDBParser object.
         The PDB parser call a number of standard methods in an aggregated
@@ -65,11 +62,8 @@ class PDBParser:
         else:
             self.structure_builder = StructureBuilder()
         self.header = None
-        self.trailer = None
         self.line_counter = 0
         self.PERMISSIVE = bool(PERMISSIVE)
-        self.QUIET = bool(QUIET)
-        self.is_pqr = bool(is_pqr)
 
     # Public methods
 
@@ -80,11 +74,6 @@ class PDBParser:
          - file - name of the PDB file OR an open filehandle
         """
         with warnings.catch_warnings():
-            if self.QUIET:
-                warnings.filterwarnings("ignore", category=PDBConstructionWarning)
-
-            self.header = None
-            self.trailer = None
             # Make a StructureBuilder instance (pass id of structure as parameter)
             self.structure_builder.init_structure(id)
 
@@ -97,42 +86,14 @@ class PDBParser:
             self.structure_builder.set_header(self.header)
             # Return the Structure instance
             structure = self.structure_builder.get_structure()
-
         return structure
-
-    def get_header(self):
-        #"""Return the header."""
-        return self.header
-
-    def get_trailer(self):
-        #"""Return the trailer."""
-        return self.trailer
 
     # Private methods
 
     def _parse(self, header_coords_trailer):
         """Parse the PDB file (PRIVATE)."""
-        # Extract the header; return the rest of the file
-        #self.header, coords_trailer = self._get_header(header_coords_trailer)
         # Parse the atomic data; return the PDB file trailer
         self.trailer = self._parse_coordinates(header_coords_trailer)
-
-    def _get_header(self, header_coords_trailer):
-        """Get the header of the PDB file, return the rest (PRIVATE)."""
-        #structure_builder = self.structure_builder
-        #i = 0
-        #for i in range(0, len(header_coords_trailer)):
-        #    structure_builder.set_line_counter(i + 1)
-        #    line = header_coords_trailer[i]
-        #    record_type = line[0:6]
-        #    if record_type in ("ATOM  ", "HETATM", "MODEL "):
-        #        break
-        #header = header_coords_trailer[0:i]
-        # Return the rest of the coords+trailer for further processing
-        #self.line_counter = i
-        #coords_trailer = header_coords_trailer[i:]
-        #header_dict = _parse_pdb_header_list(header)
-        #return header_dict, coords_trailer
 
     def _parse_coordinates(self, coords_trailer):
         """Parse the atomic data in the PDB file (PRIVATE)."""
@@ -187,24 +148,19 @@ class PDBParser:
                 resname = line[17:20].strip()
                 if ((resname.upper() != 'A') and (resname.upper() != 'G') and (resname.upper() != 'U') and (resname.upper() != 'C')):
                     raise Exception(f'Residue name on line {i+1} of pdb not formatted correctly.')
-                ##############################################################################
                 chainid = line[21]
-                ##############################################################################
                 try:
                     serial_number = int(line[6:11])
                 except Exception:
                     serial_number = 0
-                ##############################################################################
                 try:
                     resseq = int(line[22:26].split()[0])  # sequence identifier
                 except Exception:
                     raise Exception(f'Residue sequence number on line {i+1} of pdb not formatted correctly.')
-                ##############################################################################
                 icode = line[26]  # insertion code
                 hetero_flag = " "
                 residue_id = (hetero_flag, resseq, icode)
                 # atomic coordinates
-                ##############################################################################
                 try:
                     x = float(line[30:38])
                     y = float(line[38:46])
@@ -217,61 +173,32 @@ class PDBParser:
                         % global_line_counter
                     ) from None
                 coord = numpy.array((x, y, z), "f")
-
                 # occupancy & B factor
-                if not self.is_pqr:
-                    ##############################################################################
-                    try:
-                        occupancy = float(line[54:60])
-                    except Exception:
-                        self._handle_PDB_exception(
-                            "Invalid or missing occupancy", global_line_counter
-                        )
-                        occupancy = None  # Rather than arbitrary zero or one
-                    if occupancy is not None and occupancy < 0:
-                        # TODO - Should this be an error in strict mode?
-                        # self._handle_PDB_exception("Negative occupancy",
-                        #                            global_line_counter)
-                        # This uses fixed text so the warning occurs once only:
-                        warnings.warn(
-                            "Negative occupancy in one or more atoms",
-                            PDBConstructionWarning,
-                        )
-                        ##############################################################################
-                    try:
-                        bfactor = float(line[60:66])
-                    except Exception:
-                        self._handle_PDB_exception(
-                            "Invalid or missing B factor", global_line_counter
-                        )
-                        bfactor = 0.0  # PDB uses a default of zero if missing
-
-                elif self.is_pqr:
-                    # Attempt to parse charge and radius fields
-                    ##############################################################################
-                    try:
-                        pqr_charge = float(line[54:62])
-                    except Exception:
-                        self._handle_PDB_exception(
-                            "Invalid or missing charge", global_line_counter
-                        )
-                        pqr_charge = None  # Rather than arbitrary zero or one
-                        ##############################################################################
-                    try:
-                        radius = float(line[62:70])
-                    except Exception:
-                        self._handle_PDB_exception(
-                            "Invalid or missing radius", global_line_counter
-                        )
-                        radius = None
-                    if radius is not None and radius < 0:
-                        # In permissive mode raise fatal exception.
-                        message = "Negative atom radius"
-                        self._handle_PDB_exception(message, global_line_counter)
-                        radius = None
-                ##############################################################################
+                # if not self.is_pqr:
+                try:
+                    occupancy = float(line[54:60])
+                except Exception:
+                    self._handle_PDB_exception(
+                        "Invalid or missing occupancy", global_line_counter
+                    )
+                    occupancy = None  # Rather than arbitrary zero or one
+                if occupancy is not None and occupancy < 0:
+                    # TODO - Should this be an error in strict mode?
+                    # self._handle_PDB_exception("Negative occupancy",
+                    #                            global_line_counter)
+                    # This uses fixed text so the warning occurs once only:
+                    warnings.warn(
+                        "Negative occupancy in one or more atoms",
+                        PDBConstructionWarning,
+                    )
+                try:
+                    bfactor = float(line[60:66])
+                except Exception:
+                    self._handle_PDB_exception(
+                        "Invalid or missing B factor", global_line_counter
+                    )
+                    bfactor = 0.0  # PDB uses a default of zero if missing
                 segid = line[72:76]
-                ##############################################################################
                 element = line[76:78].strip().upper()
                 if current_segid != segid:
                     current_segid = segid
@@ -296,39 +223,19 @@ class PDBParser:
                         )
                     except PDBConstructionException as message:
                         self._handle_PDB_exception(message, global_line_counter)
-
-                if not self.is_pqr:
-                    # init atom with pdb fields
-                    try:
-                        structure_builder.init_atom(
-                            name,
-                            coord,
-                            bfactor,
-                            occupancy,
-                            altloc,
-                            fullname,
-                            serial_number,
-                            element,
-                        )
-                    except PDBConstructionException as message:
-                        self._handle_PDB_exception(message, global_line_counter)
-                elif self.is_pqr:
-                    try:
-                        structure_builder.init_atom(
-                            name,
-                            coord,
-                            pqr_charge,
-                            radius,
-                            altloc,
-                            fullname,
-                            serial_number,
-                            element,
-                            pqr_charge,
-                            radius,
-                            self.is_pqr,
-                        )
-                    except PDBConstructionException as message:
-                        self._handle_PDB_exception(message, global_line_counter)
+                try:
+                    structure_builder.init_atom(
+                        name,
+                        coord,
+                        bfactor,
+                        occupancy,
+                        altloc,
+                        fullname,
+                        serial_number,
+                        element,
+                    )
+                except PDBConstructionException as message:
+                    self._handle_PDB_exception(message, global_line_counter)
             elif record_type == "END   " or record_type == "CONECT":
                 # End of atomic data, return the trailer
                 self.line_counter += local_line_counter

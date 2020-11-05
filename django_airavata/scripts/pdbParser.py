@@ -9,15 +9,11 @@ def validate_pdb(file_name):
         filename  = file_name
         structure = parser.get_structure(structure_id,filename)
         atoms = structure.get_atoms()
+        atomCount = 0
         for atom in atoms:
-            a_info = atom.get_full_id()
-            a_name = atom.get_name()
-            a_chain_id = a_info[2]
-            a_res_seq = a_info[3][1]            
-            print(a_name+ ": " +a_chain_id + ", " + str(a_res_seq)) 
-        
+            atomCount += 1
+        print("Anount of atoms: " +str(atomCount))
         return True
-
     except (Exception) as e:
         print("File contains irregularities, Running with permissive mode.")
         print(e)
@@ -25,16 +21,7 @@ def validate_pdb(file_name):
             parser = PDBParser(PERMISSIVE=1)
             structure_id = "inputFile"
             filename  = file_name
-            #structure =
-            parser.get_structure(structure_id,filename)
-            #atoms = structure.get_atoms()
-           # for atom in atoms:
-            #    a_info = atom.get_full_id()
-            #    a_name = atom.get_name()
-            #    a_chain_id = a_info[2]
-            #    a_res_seq = a_info[3][1]            
-               # print(a_name+ ": " +a_chain_id + ", " + str(a_res_seq)) 
-            
+            parser.get_structure(structure_id,filename) 
             return True
         except (Exception) as e:
             print("File contains errors.")
