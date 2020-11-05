@@ -1,6 +1,5 @@
-FROM node:lts-alpine as build-stage
-
-RUN apk add yarn
+# node:lts is based on Debian and includes necessary build tools
+FROM node:lts as build-stage
 
 # build api javascript
 # api must come first, then common, since the others depend on these
@@ -56,7 +55,7 @@ RUN yarn run build
 
 
 
-FROM python:3.6.5 as server-stage
+FROM python:3.8 as server-stage
 
 ENV PYTHONUNBUFFERED 1
 ENV OAUTHLIB_INSECURE_TRANSPORT 1
