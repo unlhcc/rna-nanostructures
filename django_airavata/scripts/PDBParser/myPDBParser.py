@@ -18,11 +18,9 @@ except ImportError:
     ) from None
 
 from Bio.File import as_handle
-
 from Bio.PDB.PDBExceptions import PDBConstructionException
 from Bio.PDB.PDBExceptions import PDBConstructionWarning
 from Bio.PDB.StructureBuilder import StructureBuilder
-
 
 # If PDB spec says "COLUMNS 18-20" this means line[17:20]
 
@@ -225,10 +223,8 @@ class PDBParser:
                     except PDBConstructionException as message:
                         self._handle_PDB_exception(message,
                                                    global_line_counter)
-                elif(
-                    current_residue_id != residue_id
-                    or current_resname != resname
-                ):
+                elif(current_residue_id != residue_id or
+                     current_resname != resname):
                     current_residue_id = residue_id
                     current_resname = resname
                     try:
