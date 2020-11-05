@@ -101,11 +101,11 @@ class PDBParser:
         return structure
 
     def get_header(self):
-        """Return the header."""
+        #"""Return the header."""
         return self.header
 
     def get_trailer(self):
-        """Return the trailer."""
+        #"""Return the trailer."""
         return self.trailer
 
     # Private methods
@@ -113,26 +113,26 @@ class PDBParser:
     def _parse(self, header_coords_trailer):
         """Parse the PDB file (PRIVATE)."""
         # Extract the header; return the rest of the file
-        self.header, coords_trailer = self._get_header(header_coords_trailer)
+        #self.header, coords_trailer = self._get_header(header_coords_trailer)
         # Parse the atomic data; return the PDB file trailer
-        self.trailer = self._parse_coordinates(coords_trailer)
+        self.trailer = self._parse_coordinates(header_coords_trailer)
 
     def _get_header(self, header_coords_trailer):
         """Get the header of the PDB file, return the rest (PRIVATE)."""
-        structure_builder = self.structure_builder
-        i = 0
-        for i in range(0, len(header_coords_trailer)):
-            structure_builder.set_line_counter(i + 1)
-            line = header_coords_trailer[i]
-            record_type = line[0:6]
-            if record_type in ("ATOM  ", "HETATM", "MODEL "):
-                break
-        header = header_coords_trailer[0:i]
+        #structure_builder = self.structure_builder
+        #i = 0
+        #for i in range(0, len(header_coords_trailer)):
+        #    structure_builder.set_line_counter(i + 1)
+        #    line = header_coords_trailer[i]
+        #    record_type = line[0:6]
+        #    if record_type in ("ATOM  ", "HETATM", "MODEL "):
+        #        break
+        #header = header_coords_trailer[0:i]
         # Return the rest of the coords+trailer for further processing
-        self.line_counter = i
-        coords_trailer = header_coords_trailer[i:]
-        header_dict = _parse_pdb_header_list(header)
-        return header_dict, coords_trailer
+        #self.line_counter = i
+        #coords_trailer = header_coords_trailer[i:]
+        #header_dict = _parse_pdb_header_list(header)
+        #return header_dict, coords_trailer
 
     def _parse_coordinates(self, coords_trailer):
         """Parse the atomic data in the PDB file (PRIVATE)."""
@@ -167,13 +167,12 @@ class PDBParser:
             structure_builder.set_line_counter(global_line_counter)
             if not line.strip():
                 continue  # skip empty lines
-            elif record_type == "ATOM  " or record_type == "HETATM":
+            elif record_type == "ATOM  ":
                 # Initialize the Model - there was no explicit MODEL record
                 if not model_open:
                     structure_builder.init_model(current_model_id)
                     current_model_id += 1
                     model_open = 1
-                ##############################################################################
                 fullname = line[12:16]
                 # get rid of whitespace in atom names
                 split_list = fullname.split()
@@ -184,10 +183,10 @@ class PDBParser:
                 else:
                     # atom name is like " CA ", so we can strip spaces
                     name = split_list[0]
-                ##############################################################################
                 altloc = line[16]
-                ##############################################################################
                 resname = line[17:20].strip()
+                if ((resname.upper() != 'A') and (resname.upper() != 'G') and (resname.upper() != 'U') and (resname.upper() != 'C')):
+                    raise Exception(f'Residue name on line {i+1} of pdb not formatted correctly.')
                 ##############################################################################
                 chainid = line[21]
                 ##############################################################################
@@ -199,16 +198,10 @@ class PDBParser:
                 try:
                     resseq = int(line[22:26].split()[0])  # sequence identifier
                 except Exception:
-                    raise Exception('Residue sequence number on line {} of pdb not formatted correctly.'.format(i+1))
+                    raise Exception(f'Residue sequence number on line {i+1} of pdb not formatted correctly.')
                 ##############################################################################
                 icode = line[26]  # insertion code
-                if record_type == "HETATM":  # hetero atom flag
-                    if resname == "HOH" or resname == "WAT":
-                        hetero_flag = "W"
-                    else:
-                        hetero_flag = "H"
-                else:
-                    hetero_flag = " "
+                hetero_flag = " "
                 residue_id = (hetero_flag, resseq, icode)
                 # atomic coordinates
                 ##############################################################################
@@ -336,72 +329,10 @@ class PDBParser:
                         )
                     except PDBConstructionException as message:
                         self._handle_PDB_exception(message, global_line_counter)
-            elif record_type == "ANISOU":
-                anisou = [
-                    float(x)
-                    for x in (
-                        line[28:35],
-                        line[35:42],
-                        line[43:49],
-                        line[49:56],
-                        line[56:63],
-                        line[63:70],
-                    )
-                ]
-                # U's are scaled by 10^4
-                anisou_array = (numpy.array(anisou, "f") / 10000.0).astype("f")
-                structure_builder.set_anisou(anisou_array)
-            elif record_type == "MODEL ":
-                try:
-                    serial_num = int(line[10:14])
-                except Exception:
-                    self._handle_PDB_exception(
-                        "Invalid or missing model serial number", global_line_counter
-                    )
-                    serial_num = 0
-                structure_builder.init_model(current_model_id, serial_num)
-                current_model_id += 1
-                model_open = 1
-                current_chain_id = None
-                current_residue_id = None
             elif record_type == "END   " or record_type == "CONECT":
                 # End of atomic data, return the trailer
                 self.line_counter += local_line_counter
                 return coords_trailer[local_line_counter:]
-            elif record_type == "ENDMDL":
-                model_open = 0
-                current_chain_id = None
-                current_residue_id = None
-            elif record_type == "SIGUIJ":
-                # standard deviation of anisotropic B factor
-                siguij = [
-                    float(x)
-                    for x in (
-                        line[28:35],
-                        line[35:42],
-                        line[42:49],
-                        line[49:56],
-                        line[56:63],
-                        line[63:70],
-                    )
-                ]
-                # U sigma's are scaled by 10^4
-                siguij_array = (numpy.array(siguij, "f") / 10000.0).astype("f")
-                structure_builder.set_siguij(siguij_array)
-            elif record_type == "SIGATM":
-                # standard deviation of atomic positions
-                sigatm = [
-                    float(x)
-                    for x in (
-                        line[30:38],
-                        line[38:45],
-                        line[46:54],
-                        line[54:60],
-                        line[60:66],
-                    )
-                ]
-                sigatm_array = numpy.array(sigatm, "f")
-                structure_builder.set_sigatm(sigatm_array)
             elif record_type not in allowed_records:
                 warnings.warn(
                     "Ignoring unrecognized record '{}' at line {}".format(
