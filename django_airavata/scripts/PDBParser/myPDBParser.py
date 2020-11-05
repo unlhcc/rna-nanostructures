@@ -16,14 +16,12 @@ except ImportError:
     raise MissingPythonDependencyError(
         "Install NumPy if you want to use the PDB parser."
     ) from None
-import Bio
+
 from Bio.File import as_handle
 
 from Bio.PDB.PDBExceptions import PDBConstructionException
 from Bio.PDB.PDBExceptions import PDBConstructionWarning
-
 from Bio.PDB.StructureBuilder import StructureBuilder
-#from Bio.PDB.parse_pdb_header import _parse_pdb_header_list
 
 
 # If PDB spec says "COLUMNS 18-20" this means line[17:20]
@@ -37,25 +35,7 @@ class PDBParser:
         PERMISSIVE=True,
         structure_builder=None
     ):
-        """Create a PDBParser object.
-        The PDB parser call a number of standard methods in an aggregated
-        StructureBuilder object. Normally this object is instanciated by the
-        PDBParser object itself, but if the user provides his/her own
-        StructureBuilder object, the latter is used instead.
-        Arguments:
-         - PERMISSIVE - Evaluated as a Boolean. If false, exceptions in
-           constructing the SMCRA data structure are fatal. If true (DEFAULT),
-           the exceptions are caught, but some residues or atoms will be missing.
-           THESE EXCEPTIONS ARE DUE TO PROBLEMS IN THE PDB FILE!.
-         - get_header - unused argument kept for historical compatibilty.
-         - structure_builder - an optional user implemented StructureBuilder class.
-         - QUIET - Evaluated as a Boolean. If true, warnings issued in constructing
-           the SMCRA data will be suppressed. If false (DEFAULT), they will be shown.
-           These warnings might be indicative of problems in the PDB file!
-         - is_pqr - Evaluated as a Boolean. Specifies the type of file to be parsed.
-           If false (DEFAULT) a .pdb file format is assumed. Set it to true if you
-           want to parse a .pqr file instead.
-        """
+
         # get_header is not used but is left in for API compatibility
         if structure_builder is not None:
             self.structure_builder = structure_builder
@@ -74,7 +54,8 @@ class PDBParser:
          - file - name of the PDB file OR an open filehandle
         """
         with warnings.catch_warnings():
-            # Make a StructureBuilder instance (pass id of structure as parameter)
+            # Make a StructureBuilder instance
+            # (pass id of structure as parameter)
             self.structure_builder.init_structure(id)
 
             with as_handle(file) as handle:
@@ -109,6 +90,35 @@ class PDBParser:
             "SIGUIJ",
             # bookkeeping records after coordinates:
             "MASTER",
+            # Additional records to not worry about:
+            "REMARK",
+            "JRNL  ",
+            "LINK  ",
+            "HELIX ",
+            "HETNAM",
+            "FORMUL",
+            "SOURCE",
+            "SEQRES",
+            "KEYWDS",
+            "SCALE1",
+            "SCALE2",
+            "SCALE3",
+            "SSBOND",
+            "HEADER",
+            "TITLE ",
+            "CRYST1",
+            "ORIGX1",
+            "ORIGX2",
+            "ORIGX3",
+            "SHEET ",
+            "HET   ",
+            "COMPND",
+            "REVDAT",
+            "AUTHOR",
+            "EXPDTA",
+            "DBREF ",
+            "HETSYN",
+
         }
 
         local_line_counter = 0
@@ -146,8 +156,6 @@ class PDBParser:
                     name = split_list[0]
                 altloc = line[16]
                 resname = line[17:20].strip()
-                if ((resname.upper() != 'A') and (resname.upper() != 'G') and (resname.upper() != 'U') and (resname.upper() != 'C')):
-                    raise Exception(f'Residue name on line {i+1} of pdb not formatted correctly.')
                 chainid = line[21]
                 try:
                     serial_number = int(line[6:11])
@@ -156,7 +164,8 @@ class PDBParser:
                 try:
                     resseq = int(line[22:26].split()[0])  # sequence identifier
                 except Exception:
-                    raise Exception(f'Residue sequence number on line {i+1} of pdb not formatted correctly.')
+                    raise Exception(f'Residue sequence number on line {i+1}' +
+                                    ' of pdb not formatted correctly.')
                 icode = line[26]  # insertion code
                 hetero_flag = " "
                 residue_id = (hetero_flag, resseq, icode)
@@ -167,7 +176,8 @@ class PDBParser:
                     z = float(line[46:54])
                 except Exception:
                     # Should we allow parsing to continue in permissive mode?
-                    # If so, what coordinates should we default to?  Easier to abort!
+                    # If so, what coordinates should we default to?
+                    #   Easier to abort!
                     raise PDBConstructionException(
                         "Invalid or missing coordinate(s) at line %i."
                         % global_line_counter
@@ -213,8 +223,12 @@ class PDBParser:
                             resname, hetero_flag, resseq, icode
                         )
                     except PDBConstructionException as message:
-                        self._handle_PDB_exception(message, global_line_counter)
-                elif current_residue_id != residue_id or current_resname != resname:
+                        self._handle_PDB_exception(message,
+                                                   global_line_counter)
+                elif(
+                    current_residue_id != residue_id
+                    or current_resname != resname
+                ):
                     current_residue_id = residue_id
                     current_resname = resname
                     try:
@@ -222,7 +236,8 @@ class PDBParser:
                             resname, hetero_flag, resseq, icode
                         )
                     except PDBConstructionException as message:
-                        self._handle_PDB_exception(message, global_line_counter)
+                        self._handle_PDB_exception(message,
+                                                   global_line_counter)
                 try:
                     structure_builder.init_atom(
                         name,
@@ -269,5 +284,6 @@ class PDBParser:
                 PDBConstructionWarning,
             )
         else:
-            # exceptions are fatal - raise again with new message (including line nr)
+            # exceptions are fatal - raise again with new message
+            # (including line nr)
             raise PDBConstructionException(message) from None
