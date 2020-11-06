@@ -8,6 +8,13 @@
 
 import warnings
 
+from Bio.File import as_handle
+from Bio.PDB.PDBExceptions import (
+    PDBConstructionException,
+    PDBConstructionWarning
+)
+from Bio.PDB.StructureBuilder import StructureBuilder
+
 try:
     import numpy
 except ImportError:
@@ -17,10 +24,6 @@ except ImportError:
         "Install NumPy if you want to use the PDB parser."
     ) from None
 
-from Bio.File import as_handle
-from Bio.PDB.PDBExceptions import PDBConstructionException
-from Bio.PDB.PDBExceptions import PDBConstructionWarning
-from Bio.PDB.StructureBuilder import StructureBuilder
 
 # If PDB spec says "COLUMNS 18-20" this means line[17:20]
 
