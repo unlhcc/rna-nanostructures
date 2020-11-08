@@ -14,7 +14,7 @@
 
 **Release Three:**
 
--   November 12 - November 25
+-   November 3 - November 24
 
 -   Release Meeting: November 24, 2020
 
