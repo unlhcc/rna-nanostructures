@@ -20,7 +20,7 @@
 
 -   Team One: Airavata HTCondor Support Pull Request, Airavata HTCondor Extension testing
 
--   Team Two: Completed Django Landing Page
+-   Team Two: Completed Django Landing Page, PDB Parser Protoype, JSMol Protoype
 
 **Release Four:**
 
