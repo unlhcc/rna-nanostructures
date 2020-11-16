@@ -141,6 +141,9 @@ class PDBParser:
                 continue  # skip empty lines
             elif record_type == "ATOM  ":
                 # Initialize the Model - there was no explicit MODEL record
+                if len(line) < 78:
+                    raise Exception(f'Record on line {i+1}' +
+                                    ' of pdb not formatted correctly.')
                 if not model_open:
                     structure_builder.init_model(current_model_id)
                     current_model_id += 1
