@@ -15,7 +15,7 @@ def validate_pdb(file_name):
         print("Amount of atoms: " + str(atomCount))
         return True
     except (Exception) as e:
-        print("File contains irregularities, Running with permissive mode.")
+        print("File contains irregularities.")
         print(e)
         return False
 
