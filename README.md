@@ -33,8 +33,8 @@ install
 1.  Checkout this project and create a virtual environment.
 
     ```
-    git clone https://github.com/apache/airavata-django-portal.git
-    cd airavata-django-portal
+    git clone https://github.com/cseseniordesign/rna-nanostructures.git
+    cd rna-nanostructures
     python3 -m venv venv
     source venv/bin/activate
     pip install --upgrade pip
@@ -48,12 +48,12 @@ install
       for more details.
 
 2.  Create a local settings file. Copy
-    `django_airavata/settings_local.py.sample` to
+    `django_airavata/settings_local.py.ide` to
     `django_airavata/settings_local.py` and edit the contents to match your
     Keycloak and Airavata server deployments.
 
     ```
-    cp django_airavata/settings_local.py.sample django_airavata/settings_local.py
+    cp django_airavata/settings_local.py.ide django_airavata/settings_local.py
     ```
 
 3.  Run Django migrations
@@ -70,10 +70,10 @@ install
     ./build_js.sh
     ```
 
-5.  Load the default Wagtail CMS pages.
+5.  Load the new RNA Nanostructures Wagtail pages.
 
     ```
-    python manage.py load_cms_data new_default_theme
+    python manage.py load_cms_data rnaNanostructuresV2
     ```
 
 6.  Run the server
