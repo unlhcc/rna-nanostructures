@@ -34,7 +34,7 @@ install
 
     ```
     git clone https://github.com/cseseniordesign/rna-nanostructures.git
-    cd airavata-django-portal
+    cd rna-nanostructures
     python3 -m venv venv
     source venv/bin/activate
     pip install --upgrade pip
