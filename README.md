@@ -73,7 +73,7 @@ install
 5.  Load the new RNA Nanostructures Wagtail pages.
 
     ```
-    python manage.py load_cms_data rnaNanostructuresV2
+    python manage.py load_cms_data rnaNanostructures
     ```
 
 6.  Run the server
