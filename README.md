@@ -50,7 +50,7 @@ install
 2.  Create a local settings file. Copy
     `django_airavata/settings_local.py.ide` to
     `django_airavata/settings_local.py` and edit the contents to match your
-    Keycloak and Airavata server deployments.
+    Keycloak and Airavata server deployments (see instructions below to know how to run the stack).
 
     ```
     cp django_airavata/settings_local.py.ide django_airavata/settings_local.py
@@ -91,6 +91,10 @@ install
           ```
 
 7.  Point your browser to http://localhost:8000.
+
+## Running the full stack of Airavata for development
+
+To run the Django Portal, it requires that Airavata and its resources are running alongside the portal so that it's able to allow for login and visualization of Airavata related components. To do so, you will need to follow the instructions given on the [apache/airavata github](https://github.com/apache/airavata/tree/develop#build-and-run-docker-distribution-experimental-and-not-recommended-for-production-deployments).
 
 ## Docker instructions
 
