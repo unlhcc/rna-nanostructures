@@ -14,13 +14,13 @@
 
 **Release Three:**
 
--   November 12 - November 25
+-   November 3 - November 24
 
 -   Release Meeting: November 24, 2020
 
 -   Team One: Airavata HTCondor Support Pull Request, Airavata HTCondor Extension testing
 
--   Team Two: Completed Django Landing Page
+-   Team Two: Completed Django Landing Page, PDB Parser Protoype, JSMol Protoype
 
 **Release Four:**
 
