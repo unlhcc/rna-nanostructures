@@ -18,3 +18,5 @@ script:
   # Need to build the frontend client before running some of the Django tests
   # that use the Django test Client
   - ./runtests.py
+  # Test for PDB validator
+  - python -m unittest django_airavata/scripts/pdbParser.py
