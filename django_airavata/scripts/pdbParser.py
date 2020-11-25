@@ -1,4 +1,4 @@
-from django.test import TestCase
+import unittest
 from PDBParser.myPDBParser import PDBParser
 
 
@@ -20,8 +20,13 @@ def validate_pdb(file_name):
         return False
 
 
-class TestValidator(TestCase):
+class TestValidator(unittest.TestCase):
 
+    def setUp(self):
+        print("Running test case on PDB Validator...")
+
+    def tearDown(self):
+        print("Test case finished on PDB Validator...")
     # No errors
     def test_ValidPDB(self):
 
