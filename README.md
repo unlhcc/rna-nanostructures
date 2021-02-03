@@ -75,6 +75,7 @@ install
     ```
     python manage.py load_cms_data new_default_theme
     ```
+    - For Mac users instead of load_cms_data it has to be loaddata
 
 6.  Run the server
 
