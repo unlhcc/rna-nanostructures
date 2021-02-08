@@ -10,6 +10,8 @@ from airavata.model.application.io.ttypes import DataType
 from airavata_django_portal_sdk import user_storage
 from django.conf import settings
 from nbconvert import HTMLExporter
+from  pymol import cmd
+
 
 logger = logging.getLogger(__name__)
 
@@ -287,3 +289,16 @@ def _convert_params_to_type(output_view_provider, params):
                 f"Unrecognized type for parameter {k}: "
                 f"meta_type={meta_type}, default_value={default_value}")
     return params
+
+class MoleculeViewProvider:
+    display_type = 'html' # Should be of type html, image, or link
+    name = "Molecule Viewer"
+
+    def generate_data(self, request, experiment_output, experiment, output_file=None):
+        # Parse the output_file (PDB File)
+
+        test_script = '<script>alert(\'Hello, World!\');</script>'        
+            
+        return {
+            'output': test_script
+        }

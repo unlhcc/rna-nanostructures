@@ -1,0 +1,570 @@
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/$' [name='project-list']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects\.(?P<format>[a-z0-9]+)/?$' [name='project-list']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all/$' [name='project-list-all']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all\.(?P<format>[a-z0-9]+)/?$' [name='project-list-all']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/$' [name='project-detail']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='project-detail']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments/$' [name='project-experiments']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments\.(?P<format>[a-z0-9]+)/?$' [name='project-experiments']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/$' [name='experiment-list']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments\.(?P<format>[a-z0-9]+)/?$' [name='experiment-list']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/$' [name='experiment-detail']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='experiment-detail']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel/$' [name='experiment-cancel']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel\.(?P<format>[a-z0-9]+)/?$' [name='experiment-cancel']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone/$' [name='experiment-clone']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone\.(?P<format>[a-z0-9]+)/?$' [name='experiment-clone']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs/$' [name='experiment-jobs']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs\.(?P<format>[a-z0-9]+)/?$' [name='experiment-jobs']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch/$' [name='experiment-launch']>
+[2021-02-01 20:56:39,147 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch\.(?P<format>[a-z0-9]+)/?$' [name='experiment-launch']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)/$' [name='full-experiment-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='full-experiment-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search/$' [name='experiment-search-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search\.(?P<format>[a-z0-9]+)/?$' [name='experiment-search-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/$' [name='group-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups\.(?P<format>[a-z0-9]+)/?$' [name='group-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)/$' [name='group-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/$' [name='application-interface-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/$' [name='application-interface-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources/$' [name='application-interface-compute-resources']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-compute-resources']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/$' [name='application-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications\.(?P<format>[a-z0-9]+)/?$' [name='application-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all/$' [name='application-list-all']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all\.(?P<format>[a-z0-9]+)/?$' [name='application-list-all']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/$' [name='application-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments/$' [name='application-application-deployments']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-application-deployments']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface/$' [name='application-application-interface']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface\.(?P<format>[a-z0-9]+)/?$' [name='application-application-interface']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite/$' [name='application-favorite']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite\.(?P<format>[a-z0-9]+)/?$' [name='application-favorite']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite/$' [name='application-unfavorite']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite\.(?P<format>[a-z0-9]+)/?$' [name='application-unfavorite']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/$' [name='application-deployment-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-list']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/$' [name='application-deployment-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-detail']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues/$' [name='application-deployment-queues']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-queues']>
+[2021-02-01 20:56:39,148 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/$' [name='user-profile-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)/$' [name='user-profile-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/$' [name='group-resource-profile-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)/$' [name='group-resource-profile-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/$' [name='shared-entity-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all/$' [name='shared-entity-all']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-all']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge/$' [name='shared-entity-merge']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-merge']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names/$' [name='compute-resource-all-names']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list/$' [name='compute-resource-all-names-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/$' [name='compute-resource-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues/$' [name='compute-resource-queues']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-queues']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names/$' [name='storage-resource-all-names']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-all-names']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)/$' [name='storage-resource-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/$' [name='credential-summary-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password/$' [name='credential-summary-create-password']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-password']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh/$' [name='credential-summary-create-ssh']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-ssh']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password/$' [name='credential-summary-password']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-password']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh/$' [name='credential-summary-ssh']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-ssh']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)/$' [name='credential-summary-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-detail']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/$' [name='gateway-resource-profile-list']>
+[2021-02-01 20:56:39,149 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)/$' [name='gateway-resource-profile-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/$' [name='storage-preference-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)/$' [name='storage-preference-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/$' [name='parser-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers\.(?P<format>[a-z0-9]+)/?$' [name='parser-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)/$' [name='parser-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='parser-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/$' [name='manage-notifications-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)/$' [name='manage-notifications-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/$' [name='iam-user-profile-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/$' [name='iam-user-profile-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable/$' [name='iam-user-profile-enable']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-enable']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/$' [name='unverified-email-user-profile-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-list']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)/$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^$' [name='api-root']>
+[2021-02-01 20:56:39,150 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^\.(?P<format>[a-z0-9]+)/?$' [name='api-root']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/$' [name='project-list']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects\.(?P<format>[a-z0-9]+)/?$' [name='project-list']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all/$' [name='project-list-all']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all\.(?P<format>[a-z0-9]+)/?$' [name='project-list-all']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/$' [name='project-detail']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='project-detail']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments/$' [name='project-experiments']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments\.(?P<format>[a-z0-9]+)/?$' [name='project-experiments']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/$' [name='experiment-list']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments\.(?P<format>[a-z0-9]+)/?$' [name='experiment-list']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/$' [name='experiment-detail']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='experiment-detail']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel/$' [name='experiment-cancel']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel\.(?P<format>[a-z0-9]+)/?$' [name='experiment-cancel']>
+[2021-02-01 20:58:01,570 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone/$' [name='experiment-clone']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone\.(?P<format>[a-z0-9]+)/?$' [name='experiment-clone']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs/$' [name='experiment-jobs']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs\.(?P<format>[a-z0-9]+)/?$' [name='experiment-jobs']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch/$' [name='experiment-launch']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch\.(?P<format>[a-z0-9]+)/?$' [name='experiment-launch']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)/$' [name='full-experiment-detail']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='full-experiment-detail']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search/$' [name='experiment-search-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search\.(?P<format>[a-z0-9]+)/?$' [name='experiment-search-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/$' [name='group-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups\.(?P<format>[a-z0-9]+)/?$' [name='group-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)/$' [name='group-detail']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-detail']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/$' [name='application-interface-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/$' [name='application-interface-detail']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-detail']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources/$' [name='application-interface-compute-resources']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-compute-resources']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/$' [name='application-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications\.(?P<format>[a-z0-9]+)/?$' [name='application-list']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all/$' [name='application-list-all']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all\.(?P<format>[a-z0-9]+)/?$' [name='application-list-all']>
+[2021-02-01 20:58:01,571 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/$' [name='application-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments/$' [name='application-application-deployments']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-application-deployments']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface/$' [name='application-application-interface']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface\.(?P<format>[a-z0-9]+)/?$' [name='application-application-interface']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite/$' [name='application-favorite']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite\.(?P<format>[a-z0-9]+)/?$' [name='application-favorite']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite/$' [name='application-unfavorite']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite\.(?P<format>[a-z0-9]+)/?$' [name='application-unfavorite']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/$' [name='application-deployment-list']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-list']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/$' [name='application-deployment-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues/$' [name='application-deployment-queues']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-queues']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/$' [name='user-profile-list']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-list']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)/$' [name='user-profile-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/$' [name='group-resource-profile-list']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-list']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)/$' [name='group-resource-profile-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/$' [name='shared-entity-detail']>
+[2021-02-01 20:58:01,572 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-detail']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all/$' [name='shared-entity-all']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-all']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge/$' [name='shared-entity-merge']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-merge']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names/$' [name='compute-resource-all-names']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list/$' [name='compute-resource-all-names-list']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names-list']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/$' [name='compute-resource-detail']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-detail']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues/$' [name='compute-resource-queues']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-queues']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names/$' [name='storage-resource-all-names']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-all-names']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)/$' [name='storage-resource-detail']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-detail']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/$' [name='credential-summary-list']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-list']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password/$' [name='credential-summary-create-password']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-password']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh/$' [name='credential-summary-create-ssh']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-ssh']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password/$' [name='credential-summary-password']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-password']>
+[2021-02-01 20:58:01,573 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh/$' [name='credential-summary-ssh']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-ssh']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)/$' [name='credential-summary-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/$' [name='gateway-resource-profile-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)/$' [name='gateway-resource-profile-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/$' [name='storage-preference-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)/$' [name='storage-preference-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/$' [name='parser-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers\.(?P<format>[a-z0-9]+)/?$' [name='parser-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)/$' [name='parser-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='parser-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/$' [name='manage-notifications-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)/$' [name='manage-notifications-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/$' [name='iam-user-profile-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-list']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/$' [name='iam-user-profile-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-detail']>
+[2021-02-01 20:58:01,574 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable/$' [name='iam-user-profile-enable']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-enable']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/$' [name='unverified-email-user-profile-list']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-list']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)/$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^$' [name='api-root']>
+[2021-02-01 20:58:01,575 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^\.(?P<format>[a-z0-9]+)/?$' [name='api-root']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/$' [name='project-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects\.(?P<format>[a-z0-9]+)/?$' [name='project-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all/$' [name='project-list-all']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all\.(?P<format>[a-z0-9]+)/?$' [name='project-list-all']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/$' [name='project-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='project-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments/$' [name='project-experiments']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments\.(?P<format>[a-z0-9]+)/?$' [name='project-experiments']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/$' [name='experiment-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments\.(?P<format>[a-z0-9]+)/?$' [name='experiment-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/$' [name='experiment-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='experiment-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel/$' [name='experiment-cancel']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel\.(?P<format>[a-z0-9]+)/?$' [name='experiment-cancel']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone/$' [name='experiment-clone']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone\.(?P<format>[a-z0-9]+)/?$' [name='experiment-clone']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs/$' [name='experiment-jobs']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs\.(?P<format>[a-z0-9]+)/?$' [name='experiment-jobs']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch/$' [name='experiment-launch']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch\.(?P<format>[a-z0-9]+)/?$' [name='experiment-launch']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)/$' [name='full-experiment-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='full-experiment-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search/$' [name='experiment-search-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search\.(?P<format>[a-z0-9]+)/?$' [name='experiment-search-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/$' [name='group-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups\.(?P<format>[a-z0-9]+)/?$' [name='group-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)/$' [name='group-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-detail']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/$' [name='application-interface-list']>
+[2021-02-01 21:12:34,007 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/$' [name='application-interface-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources/$' [name='application-interface-compute-resources']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-compute-resources']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/$' [name='application-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications\.(?P<format>[a-z0-9]+)/?$' [name='application-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all/$' [name='application-list-all']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all\.(?P<format>[a-z0-9]+)/?$' [name='application-list-all']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/$' [name='application-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments/$' [name='application-application-deployments']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-application-deployments']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface/$' [name='application-application-interface']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface\.(?P<format>[a-z0-9]+)/?$' [name='application-application-interface']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite/$' [name='application-favorite']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite\.(?P<format>[a-z0-9]+)/?$' [name='application-favorite']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite/$' [name='application-unfavorite']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite\.(?P<format>[a-z0-9]+)/?$' [name='application-unfavorite']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/$' [name='application-deployment-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/$' [name='application-deployment-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues/$' [name='application-deployment-queues']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-queues']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/$' [name='user-profile-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)/$' [name='user-profile-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/$' [name='group-resource-profile-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-list']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)/$' [name='group-resource-profile-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/$' [name='shared-entity-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-detail']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all/$' [name='shared-entity-all']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-all']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge/$' [name='shared-entity-merge']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-merge']>
+[2021-02-01 21:12:34,008 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names/$' [name='compute-resource-all-names']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list/$' [name='compute-resource-all-names-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/$' [name='compute-resource-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues/$' [name='compute-resource-queues']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-queues']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names/$' [name='storage-resource-all-names']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-all-names']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)/$' [name='storage-resource-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/$' [name='credential-summary-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password/$' [name='credential-summary-create-password']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-password']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh/$' [name='credential-summary-create-ssh']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-ssh']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password/$' [name='credential-summary-password']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-password']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh/$' [name='credential-summary-ssh']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-ssh']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)/$' [name='credential-summary-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/$' [name='gateway-resource-profile-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)/$' [name='gateway-resource-profile-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/$' [name='storage-preference-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)/$' [name='storage-preference-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/$' [name='parser-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers\.(?P<format>[a-z0-9]+)/?$' [name='parser-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)/$' [name='parser-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='parser-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/$' [name='manage-notifications-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-list']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)/$' [name='manage-notifications-detail']>
+[2021-02-01 21:12:34,009 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-detail']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/$' [name='iam-user-profile-list']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-list']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/$' [name='iam-user-profile-detail']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-detail']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable/$' [name='iam-user-profile-enable']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-enable']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/$' [name='unverified-email-user-profile-list']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-list']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)/$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^$' [name='api-root']>
+[2021-02-01 21:12:34,010 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^\.(?P<format>[a-z0-9]+)/?$' [name='api-root']>
+[2021-02-01 21:12:41,392 django.utils.autoreload:597 INFO] Watching for file changes with StatReloader
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/$' [name='project-list']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects\.(?P<format>[a-z0-9]+)/?$' [name='project-list']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all/$' [name='project-list-all']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/list_all\.(?P<format>[a-z0-9]+)/?$' [name='project-list-all']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/$' [name='project-detail']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='project-detail']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments/$' [name='project-experiments']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^projects/(?P<project_id>[^/]+)/experiments\.(?P<format>[a-z0-9]+)/?$' [name='project-experiments']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/$' [name='experiment-list']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments\.(?P<format>[a-z0-9]+)/?$' [name='experiment-list']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/$' [name='experiment-detail']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='experiment-detail']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel/$' [name='experiment-cancel']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/cancel\.(?P<format>[a-z0-9]+)/?$' [name='experiment-cancel']>
+[2021-02-01 21:12:41,595 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone/$' [name='experiment-clone']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/clone\.(?P<format>[a-z0-9]+)/?$' [name='experiment-clone']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs/$' [name='experiment-jobs']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/jobs\.(?P<format>[a-z0-9]+)/?$' [name='experiment-jobs']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch/$' [name='experiment-launch']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiments/(?P<experiment_id>[^/]+)/launch\.(?P<format>[a-z0-9]+)/?$' [name='experiment-launch']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)/$' [name='full-experiment-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^full-experiments/(?P<experiment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='full-experiment-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search/$' [name='experiment-search-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^experiment-search\.(?P<format>[a-z0-9]+)/?$' [name='experiment-search-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/$' [name='group-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups\.(?P<format>[a-z0-9]+)/?$' [name='group-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)/$' [name='group-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^groups/(?P<group_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/$' [name='application-interface-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/$' [name='application-interface-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources/$' [name='application-interface-compute-resources']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-interfaces/(?P<app_interface_id>[^/]+)/compute_resources\.(?P<format>[a-z0-9]+)/?$' [name='application-interface-compute-resources']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/$' [name='application-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications\.(?P<format>[a-z0-9]+)/?$' [name='application-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all/$' [name='application-list-all']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/list_all\.(?P<format>[a-z0-9]+)/?$' [name='application-list-all']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/$' [name='application-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments/$' [name='application-application-deployments']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-application-deployments']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface/$' [name='application-application-interface']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/application_interface\.(?P<format>[a-z0-9]+)/?$' [name='application-application-interface']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite/$' [name='application-favorite']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/favorite\.(?P<format>[a-z0-9]+)/?$' [name='application-favorite']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite/$' [name='application-unfavorite']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^applications/(?P<app_module_id>[^/]+)/unfavorite\.(?P<format>[a-z0-9]+)/?$' [name='application-unfavorite']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/$' [name='application-deployment-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-list']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/$' [name='application-deployment-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-detail']>
+[2021-02-01 21:12:41,596 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues/$' [name='application-deployment-queues']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^application-deployments/(?P<app_deployment_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='application-deployment-queues']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/$' [name='user-profile-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)/$' [name='user-profile-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^user-profiles/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='user-profile-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/$' [name='group-resource-profile-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)/$' [name='group-resource-profile-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^group-resource-profiles/(?P<group_resource_profile_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='group-resource-profile-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/$' [name='shared-entity-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all/$' [name='shared-entity-all']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/all\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-all']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge/$' [name='shared-entity-merge']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^shared-entities/(?P<entity_id>[^/]+)/merge\.(?P<format>[a-z0-9]+)/?$' [name='shared-entity-merge']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names/$' [name='compute-resource-all-names']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list/$' [name='compute-resource-all-names-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/all_names_list\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-all-names-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/$' [name='compute-resource-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues/$' [name='compute-resource-queues']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^compute-resources/(?P<compute_resource_id>[^/]+)/queues\.(?P<format>[a-z0-9]+)/?$' [name='compute-resource-queues']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names/$' [name='storage-resource-all-names']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/all_names\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-all-names']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)/$' [name='storage-resource-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-resources/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-resource-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/$' [name='credential-summary-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-list']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password/$' [name='credential-summary-create-password']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-password']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh/$' [name='credential-summary-create-ssh']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/create_ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-create-ssh']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password/$' [name='credential-summary-password']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/password\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-password']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh/$' [name='credential-summary-ssh']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/ssh\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-ssh']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)/$' [name='credential-summary-detail']>
+[2021-02-01 21:12:41,597 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^credential-summaries/(?P<pk>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='credential-summary-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/$' [name='gateway-resource-profile-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)/$' [name='gateway-resource-profile-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^gateway-resource-profiles/(?P<gateway_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='gateway-resource-profile-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/$' [name='storage-preference-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)/$' [name='storage-preference-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^storage-preferences/(?P<storage_resource_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='storage-preference-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/$' [name='parser-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers\.(?P<format>[a-z0-9]+)/?$' [name='parser-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)/$' [name='parser-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^parsers/(?P<parser_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='parser-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/$' [name='manage-notifications-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)/$' [name='manage-notifications-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^manage-notifications/(?P<notification_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='manage-notifications-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/$' [name='iam-user-profile-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/$' [name='iam-user-profile-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable/$' [name='iam-user-profile-enable']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^iam-user-profiles/(?P<user_id>[^/]+)/enable\.(?P<format>[a-z0-9]+)/?$' [name='iam-user-profile-enable']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/$' [name='unverified-email-user-profile-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-list']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)/$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^unverified-email-users/(?P<user_id>[^/]+)\.(?P<format>[a-z0-9]+)/?$' [name='unverified-email-user-profile-detail']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^$' [name='api-root']>
+[2021-02-01 21:12:41,598 django_airavata.apps.api.urls:112 DEBUG] router url: <URLPattern '^\.(?P<format>[a-z0-9]+)/?$' [name='api-root']>
+[2021-02-01 21:12:46,755 django.server:154 INFO] "GET / HTTP/1.1" 200 9694
+[2021-02-01 21:12:46,839 django.server:154 INFO] "GET /static/css/draft-colors.css HTTP/1.1" 200 29
+[2021-02-01 21:12:46,840 django.server:154 INFO] "GET /static/common/dist/css/chunk-vendors.ea3367d1.css HTTP/1.1" 200 211319
+[2021-02-01 21:12:46,857 django.server:154 INFO] "GET /static/common/dist/js/chunk-vendors.7db780c7.js HTTP/1.1" 200 556507
+[2021-02-01 21:12:46,857 django.server:154 INFO] "GET /static/common/dist/js/cms.0d030adb.js HTTP/1.1" 200 1793
+[2021-02-01 21:12:46,863 django.server:154 INFO] "GET /media/images/Derek_Weitzel.max-250x250.png HTTP/1.1" 200 47019
+[2021-02-01 21:12:46,870 django.server:154 INFO] "GET /media/images/scaffold_zSQd6Te.max-250x250.png HTTP/1.1" 200 40632
+[2021-02-01 21:12:46,871 django.server:154 INFO] "GET /media/images/Hongfeng_Yu.max-250x250.jpg HTTP/1.1" 200 34228
+[2021-02-01 21:12:46,871 django.server:154 INFO] "GET /media/images/university-of-nebraska-lincoln-Unl.original.png HTTP/1.1" 200 35033
+[2021-02-01 21:12:46,873 django.server:154 INFO] "GET /media/images/Joseph_Yesselman.max-250x250.jpg HTTP/1.1" 200 41916
+[2021-02-01 21:12:46,873 django.server:154 INFO] "GET /media/images/landingPageBackgroundV5.original.jpg HTTP/1.1" 200 199033
+[2021-02-01 21:12:46,933 django.request:222 WARNING] Not Found: /favicon.ico
+[2021-02-01 21:12:46,933 django.server:154 WARNING] "GET /favicon.ico HTTP/1.1" 404 4129
+[2021-02-01 21:12:56,924 django.server:154 INFO] "GET /auth/login HTTP/1.1" 200 5812
+[2021-02-01 21:12:56,944 django.server:154 INFO] "GET /static/common/dist/css/chunk-vendors.ea3367d1.css HTTP/1.1" 304 0
+[2021-02-01 21:12:56,944 django.server:154 INFO] "GET /static/common/dist/css/app.077b42d2.css HTTP/1.1" 200 4275
+[2021-02-01 21:12:56,949 django.server:154 INFO] "GET /static/common/dist/js/chunk-vendors.7db780c7.js HTTP/1.1" 304 0
+[2021-02-01 21:12:56,949 django.server:154 INFO] "GET /static/images/airavata-logo.png HTTP/1.1" 200 5510
+[2021-02-01 21:12:56,949 django.server:154 INFO] "GET /static/common/dist/js/app.faa7ad7b.js HTTP/1.1" 200 1853
+[2021-02-01 21:13:04,756 django_airavata.apps.auth.backends:81 ERROR] login failed
+Traceback (most recent call last):
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connection.py", line 140, in _new_conn
+    conn = connection.create_connection(
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/util/connection.py", line 83, in create_connection
+    raise err
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connectionpool.py", line 597, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connectionpool.py", line 345, in _make_request
+    self._validate_conn(conn)
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connectionpool.py", line 844, in _validate_conn
+    conn.connect()
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connection.py", line 149, in _new_conn
+    raise NewConnectionError(
+requests.packages.urllib3.exceptions.NewConnectionError: <requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f20877f6dc0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/adapters.py", line 413, in send
+    resp = conn.urlopen(
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/connectionpool.py", line 648, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/packages/urllib3/util/retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+requests.packages.urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='airavata.host', port=8443): Max retries exceeded with url: /auth/realms/default/protocol/openid-connect/token (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f20877f6dc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/evan/senior_design/rna-nanostructures/django_airavata/apps/auth/backends.py", line 36, in authenticate
+    token, userinfo = self._get_token_and_userinfo_password_flow(
+  File "/home/evan/senior_design/rna-nanostructures/django_airavata/apps/auth/backends.py", line 101, in _get_token_and_userinfo_password_flow
+    token = oauth2_session.fetch_token(token_url=token_url,
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests_oauthlib/oauth2_session.py", line 219, in fetch_token
+    r = self.post(token_url, data=dict(urldecode(body)),
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/sessions.py", line 535, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests_oauthlib/oauth2_session.py", line 357, in request
+    return super(OAuth2Session, self).request(method, url,
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/sessions.py", line 488, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/sessions.py", line 609, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/evan/senior_design/rna-nanostructures/venv/lib/python3.8/site-packages/requests/adapters.py", line 487, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='airavata.host', port=8443): Max retries exceeded with url: /auth/realms/default/protocol/openid-connect/token (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f20877f6dc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2021-02-01 21:13:04,759 django_airavata.apps.auth.views:93 DEBUG] authenticated user: None
+[2021-02-01 21:13:04,764 django.server:154 INFO] "POST /auth/handle_login HTTP/1.1" 200 5905
+[2021-02-01 21:13:29,352 django.server:154 INFO] "GET /auth/login HTTP/1.1" 200 5812
+[2021-02-01 21:13:30,580 django.server:154 INFO] "GET / HTTP/1.1" 200 9694
+[2021-02-01 21:13:30,605 django.server:154 INFO] "GET /media/images/scaffold_zSQd6Te.max-250x250.png HTTP/1.1" 200 40632
+[2021-02-01 21:13:30,625 django.server:154 INFO] "GET /media/images/Derek_Weitzel.max-250x250.png HTTP/1.1" 200 47019
+[2021-02-01 21:13:30,630 django.server:154 INFO] "GET /media/images/Hongfeng_Yu.max-250x250.jpg HTTP/1.1" 200 34228
+[2021-02-01 21:13:30,630 django.server:154 INFO] "GET /media/images/Joseph_Yesselman.max-250x250.jpg HTTP/1.1" 200 41916
+[2021-02-01 21:13:30,630 django.server:154 INFO] "GET /media/images/university-of-nebraska-lincoln-Unl.original.png HTTP/1.1" 200 35033
+[2021-02-01 21:13:30,630 django.server:154 INFO] "GET /media/images/landingPageBackgroundV5.original.jpg HTTP/1.1" 200 199033
+[2021-02-01 21:13:52,072 django.server:154 INFO] "GET /documentation/ HTTP/1.1" 200 5532
+[2021-02-01 21:13:52,091 django.server:154 INFO] "GET /static/common/dist/css/chunk-vendors.ea3367d1.css HTTP/1.1" 304 0
+[2021-02-01 21:13:52,092 django.server:154 INFO] "GET /static/common/dist/js/chunk-vendors.7db780c7.js HTTP/1.1" 304 0
+[2021-02-01 21:13:52,092 django.server:154 INFO] "GET /static/common/dist/js/cms.0d030adb.js HTTP/1.1" 304 0
