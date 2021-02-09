@@ -56,6 +56,6 @@ setup(
     ],
     entry_points = """
         [airavata.output_view_providers]
-        molecule_viewer = rna-nanostructures.output_views:MoleculeViewProvider
+        molecule_viewer=django_airavata.apps.api.output_views:MoleculeViewProvider
     """,
 )
