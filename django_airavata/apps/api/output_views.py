@@ -6,11 +6,13 @@ import os
 
 import nbformat
 import papermill as pm
+import matplotlib as plt
+import pandas as pd
 from airavata.model.application.io.ttypes import DataType
 from airavata_django_portal_sdk import user_storage
 from django.conf import settings
 from nbconvert import HTMLExporter
-from  pymol import cmd
+import io
 
 
 logger = logging.getLogger(__name__)
@@ -302,3 +304,28 @@ class MoleculeViewProvider:
         return {
             'output': test_script
         }
+
+class RNAMakeTableViewProvider:
+    display_type = 'image'
+    name = "RNAMake Table"
+    
+    def generate_data(self, request, experiment_output, experiment, output_file=None):
+        # Parse the output_files(PDBS)
+        pdb = pd.read_fwf(output_file)
+
+        # Create a new figure to print the table 
+        table = pdb.plot()
+
+        buffer = io.BytesIO()
+        table.savefig(buffer, format='png')
+        image_bytes = buffer.getvalue()
+        buffer.close()
+
+        # return dictionary with image data
+        return {
+            'image': image_bytes,
+            'mime-type': 'image/png'
+        }
+
+        
+    
