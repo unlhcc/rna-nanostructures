@@ -108,7 +108,8 @@ for entry_point in iter_entry_points(group='airavata.djangoapp'):
     INSTALLED_APPS.append("{}.{}".format(entry_point.module_name,
                                          entry_point.attrs[0]))
 
-OUTPUT_VIEW_PROVIDERS = {}
+OUTPUT_VIEW_PROVIDERS = {
+}
 for entry_point in iter_entry_points(group='airavata.output_view_providers'):
     OUTPUT_VIEW_PROVIDERS[entry_point.name] = entry_point.load()()
 

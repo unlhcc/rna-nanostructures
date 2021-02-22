@@ -30,6 +30,18 @@ class DefaultViewProvider:
         return {
         }
 
+class MoleculeViewProvider:
+    display_type = 'html' # Should be of type html, image, or link
+    name = "Molecule Viewer"
+
+    def generate_data(self, request, experiment_output, experiment, output_file=None):
+        # Parse the output_file (PDB File)
+
+        test_script = '<script>alert(\'Hello, World!\');</script>'        
+            
+        return {
+            'output': test_script
+        }
 
 class ParameterizedNotebookViewProvider:
     display_type = 'notebook'
@@ -67,6 +79,7 @@ class ParameterizedNotebookViewProvider:
 
 DEFAULT_VIEW_PROVIDERS = {
     'default': DefaultViewProvider()
+
 }
 
 
@@ -85,6 +98,7 @@ def get_output_views(request, experiment, application_interface=None):
                 output_view_provider = settings.OUTPUT_VIEW_PROVIDERS[
                     output_view_provider_id]
             else:
+                print(settings.OUTPUT_VIEW_PROVIDERS)
                 logger.warning("Unable to find output view provider with "
                                "name '{}'".format(output_view_provider_id))
             if output_view_provider is not None:
