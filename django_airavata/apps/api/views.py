@@ -1939,6 +1939,11 @@ def link_output_view(request):
     return JsonResponse(data)
 
 
+@api_view()
+def molecule_output_view(request):
+    data = _generate_output_view_data(request)
+    return JsonResponse(data)
+
 def _generate_output_view_data(request):
     params = request.GET.copy()
     provider_id = params.pop('provider-id')[0]
