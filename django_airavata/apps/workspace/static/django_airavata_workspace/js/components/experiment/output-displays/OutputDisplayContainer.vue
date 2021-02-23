@@ -37,6 +37,7 @@ import LinkOutputDisplay from "./LinkOutputDisplay";
 import NotebookOutputDisplay from "./NotebookOutputDisplay";
 import InteractiveParametersPanel from "./interactive-parameters/InteractiveParametersPanel";
 import OutputViewDataLoader from "./OutputViewDataLoader";
+import MoleculeOutputDisplay from "./MoleculeOutputDisplay";
 
 export default {
   name: "output-viewer-container",
