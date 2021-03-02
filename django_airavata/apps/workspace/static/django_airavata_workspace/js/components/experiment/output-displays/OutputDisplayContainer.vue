@@ -37,6 +37,7 @@ import LinkOutputDisplay from "./LinkOutputDisplay";
 import NotebookOutputDisplay from "./NotebookOutputDisplay";
 import InteractiveParametersPanel from "./interactive-parameters/InteractiveParametersPanel";
 import OutputViewDataLoader from "./OutputViewDataLoader";
+import MoleculeOutputDisplay from "./MoleculeOutputDisplay";
 
 export default {
   name: "output-viewer-container",
@@ -66,7 +67,8 @@ export default {
     ImageOutputDisplay,
     LinkOutputDisplay,
     NotebookOutputDisplay,
-    InteractiveParametersPanel,
+    MoleculeOutputDisplay,
+    InteractiveParametersPanel
   },
   created() {
     if (this.providerId !== "default") {
@@ -110,6 +112,10 @@ export default {
         image: {
           component: "image-output-display",
           url: "/api/image-output/",
+        },
+        molecule: {
+          component: "molecule-output-display",
+          url: "/api/molecule-output/",
         },
       };
     },
