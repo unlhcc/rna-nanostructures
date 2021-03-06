@@ -12,7 +12,7 @@
 
 -   Team Two: Django Application and Landing page wireframes, Django Application and Landing page User-Tests, Django Application and Landing page mockups
 
-**Release Three:**
+**Release Three: Completed**
 
 -   November 3 - November 24
 
@@ -24,7 +24,9 @@
 
 **Release Four:**
 
--   February 8 - February 19
+-   February 22 - March 5
+
+-   Release Meeting: March 5, 2021  
 
 -   Team One: Test the integration of the Airavata HTCondor extension in the Django Portal
 
@@ -32,12 +34,16 @@
 
 **Release Five:**
 
--   March 8 - March 19
+-   March 29 - April 9
+
+-   Release Meeting: April 9, 2021
 
 -   Completed Finalize the Django Application, validate test cases, make final changes to the application according to sponsor feedback
 
 **Release Six:**
 
--   April 12 - April 23
+-   April 19 - April 30
+
+-   Release Meeting: April 30, 2021
 
 -   RNA Nanostructures Science Gateway deployment (Documentation, Presentation)
