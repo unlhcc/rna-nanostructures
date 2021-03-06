@@ -17,14 +17,13 @@ The following instructions discuss how to install Airavata and the PGA Portal fo
     * Verify that maven was correctly installed:
     * ```maven -version```
     * Ensure that the output looks similar to this:
-    * ```
+    ```
          Apache Maven 3.6.3
          Maven home: /usr/share/maven
          Java version: 15.0.1, vendor: Oracle Corporation, runtime: 
          home/.../.jdks/openjdk-15.0.1
          Default locale: en_US, platform encoding: UTF-8
-         OS name: "linux", version: "5.4.0-52-generic", arch: "amd64", family: "unix"
-	```
+         OS name: "linux", version: "5.4.0-52-generic", arch: "amd64", family: "unix" ```
 * Ensure that Git is installed
 * Ensure that Python 3 is installed
 * Ensure that npm is installed or up to date.
