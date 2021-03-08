@@ -32,18 +32,18 @@ class DefaultViewProvider:
         return {
         }
 
-class MoleculeViewProvider:
-    display_type = 'html' # Should be of type html, image, or link
-    name = "Molecule Viewer"
 
-    def generate_data(self, request, experiment_output, experiment, output_file=None):
-        # Parse the output_file (PDB File)
+class GLMolViewProvider:
+    display_type = 'molecule'
+    name = 'GLMol View'
+    test_output_file = None
 
-        test_script = '<script>alert(\'Hello, World!\');</script>'        
-            
+    def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
+        # Pass the output file to the GLMol provider
         return {
-            'output': test_script
+            'pdb': output_file
         }
+
 
 class ParameterizedNotebookViewProvider:
     display_type = 'notebook'
@@ -81,7 +81,6 @@ class ParameterizedNotebookViewProvider:
 
 DEFAULT_VIEW_PROVIDERS = {
     'default': DefaultViewProvider()
-
 }
 
 

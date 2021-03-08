@@ -18,7 +18,7 @@ export default {
         transformer.styles.set3DRepresentation('Ball and Stick');
         transformer.styles.backgroundColor = 'black';
 
-        ChemDoodle.io.file.content(this.viewData, function(fileContent) {
+        ChemDoodle.io.file.content(this.viewData["pdb"], function(fileContent) {
           var mol = ChemDoodle.readPDB(fileContent);
           transformer.loadMolecule(mol);
         }); 
