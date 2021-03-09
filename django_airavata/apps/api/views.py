@@ -1941,7 +1941,7 @@ def link_output_view(request):
 @api_view()
 def molecule_output_view(request):
     data = _generate_output_view_data(request)
-    return JsonResponse(data)
+    return Response(data)
 
 def _generate_output_view_data(request):
     params = request.GET.copy()

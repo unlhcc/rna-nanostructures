@@ -7,6 +7,7 @@ from functools import partial
 
 import nbformat
 import papermill as pm
+import pickle
 from airavata.model.application.io.ttypes import DataType
 from airavata_django_portal_sdk import user_storage
 from django.conf import settings
@@ -36,10 +37,13 @@ class DefaultViewProvider:
 class GLMolViewProvider:
     display_type = 'molecule'
     name = 'GLMol View'
-    test_output_file = None
+
+    file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","moleculeViewer")
+    test_output_file = file_path + "/input.pdb"
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
         # Pass the output file to the GLMol provider
+
         return {
             'pdb': output_file
         }
