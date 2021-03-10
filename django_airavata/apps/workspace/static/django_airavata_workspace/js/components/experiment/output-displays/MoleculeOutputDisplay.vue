@@ -1,6 +1,6 @@
 <template>
   <div id="dataContainer" style="width: 500px; height: 500px; background-color: black;">
-    {{dataContainer()}}
+    {{dataContainer}}
   </div>
 </template>
 
@@ -16,7 +16,7 @@
       },
     },
     computed: {
-      dataContainer() {
+      dataContainer: function() {
         if (this.viewData) {
           let transformer = new ChemDoodle.TransformCanvas3D('transformer', 500, 500, true);
           transformer.styles.set3DRepresentation('Ball and Stick');
