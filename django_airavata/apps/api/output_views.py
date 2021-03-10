@@ -43,7 +43,6 @@ class GLMolViewProvider:
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
         # Pass the output file to the GLMol provider
-
         return {
             'pdb': output_file
         }

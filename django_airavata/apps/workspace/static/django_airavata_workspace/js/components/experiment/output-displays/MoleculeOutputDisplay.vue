@@ -1,5 +1,7 @@
 <template>
-  <div id="molecule" style="width: 500px; height: 500px; background-color: red;"></div>
+  <div id="dataContainer" style="width: 500px; height: 500px; background-color: black;">
+    {{dataContainer()}}
+  </div>
 </template>
 
 <link rel="stylesheet" href="<%= BASE_URL %>/static/glmol/ChemDoodleWeb.css" type="text/css">
