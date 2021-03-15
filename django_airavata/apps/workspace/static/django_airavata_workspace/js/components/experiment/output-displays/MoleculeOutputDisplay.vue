@@ -1,14 +1,15 @@
 <template>
-  <div id="dataContainer" style="width: 500px; height: 500px; background-color: black;">
-    {{dataContainer}}
-  </div>
+  <div style="width: 500px; height: 500px; background-color: black;">{{ dataContainer }}</div>
 </template>
 
-<link rel="stylesheet" href="<%= BASE_URL %>/static/glmol/ChemDoodleWeb.css" type="text/css">
-<script type="text/javascript" src="<%= BASE_URL %>/static/glmol/ChemDoodleWeb.js">
+<script>
+  import "./static/css/css/ChemDoodleWeb.css"
+  // import * as ChemDoodle from "./static/ChemDoodleWeb/install/ChemDoodleWeb.js"
+  import ChemDoodle from "./static/js/ChemDoodleWeb.js"
+
   export default {
     name: "molecule-output-display",
-    description: "A molecule Viewer",
+    description: "Molecule Viewer",
     props: {
       viewData: {
         type: Object,
@@ -21,12 +22,14 @@
           let transformer = new ChemDoodle.TransformCanvas3D('transformer', 500, 500, true);
           transformer.styles.set3DRepresentation('Ball and Stick');
           transformer.styles.backgroundColor = 'black';
+          var mol = ChemDoodle.readPDB(this.viewData["pdb"]);
+          transformer.loadMolecule(mol);
 
-          ChemDoodle.io.file.content(this.viewData["pdb"], function(fileContent) {
-            var mol = ChemDoodle.readPDB(fileContent);
-            transformer.loadMolecule(mol);
-          }); 
-          
+          // ChemDoodle.io.file.content(this.viewData["pdb"], function(fileContent) {
+          //   var mol = ChemDoodle.readPDB(fileContent);
+          //   transformer.loadMolecule(mol);
+          // }); 
+
           return transformer;
         } else {
           return null;
