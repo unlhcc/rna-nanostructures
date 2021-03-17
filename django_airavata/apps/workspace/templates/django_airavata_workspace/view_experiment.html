@@ -4,4 +4,9 @@
 
 <div id="{{ bundle_name }}" data-full-experiment-data="{{ full_experiment_data }}" data-launching="{{ launching }}"></div>
 
+{% block GLMol %}
+   <link rel="stylesheet" href="../../../static/glmol/ChemDoodleWeb.css" type="text/css">
+   <script type="text/javascript" src="../../../static/glmol/ChemDoodleWeb.js"></script>
+{% endblock %}
+
 {% endblock content %}

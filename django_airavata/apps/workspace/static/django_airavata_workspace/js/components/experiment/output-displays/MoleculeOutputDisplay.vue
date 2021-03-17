@@ -1,11 +1,12 @@
 <template>
-  <div style="width: 500px; height: 500px; background-color: black;">{{ dataContainer }}</div>
+  <div style="width: 500px; height: 500px; background-color: white;" >
+    {{ dataContainer }}
+    <canvas id="transformBallAndStick"></canvas>
+  </div>
 </template>
 
 <script>
-  import "./static/css/css/ChemDoodleWeb.css"
-  // import * as ChemDoodle from "./static/ChemDoodleWeb/install/ChemDoodleWeb.js"
-  import ChemDoodle from "./static/js/ChemDoodleWeb.js"
+  /* globals ChemDoodle */
 
   export default {
     name: "molecule-output-display",
@@ -17,24 +18,18 @@
       },
     },
     computed: {
-      dataContainer: function() {
-        if (this.viewData) {
-          let transformer = new ChemDoodle.TransformCanvas3D('transformer', 500, 500, true);
-          transformer.styles.set3DRepresentation('Ball and Stick');
-          transformer.styles.backgroundColor = 'black';
-          var mol = ChemDoodle.readPDB(this.viewData["pdb"]);
-          transformer.loadMolecule(mol);
-
-          // ChemDoodle.io.file.content(this.viewData["pdb"], function(fileContent) {
-          //   var mol = ChemDoodle.readPDB(fileContent);
-          //   transformer.loadMolecule(mol);
-          // }); 
-
-          return transformer;
-        } else {
-          return null;
+      dataContainer() {
+        if (this.viewData['pdb']) {
+          let transformBallAndStick = new ChemDoodle.TransformCanvas3D('transformBallAndStick', 500, 500);
+          transformBallAndStick.styles.set3DRepresentation('Ball and Stick');
+          transformBallAndStick.styles.backgroundColor = 'black';
+          let molecule = ChemDoodle.readPDB(this.viewData["pdb"].join(''), 1);
+          transformBallAndStick.loadMolecule(molecule);  
         }
-      },
-    },
+
+        return null;
+      }
+    }
   };
 </script>
+
