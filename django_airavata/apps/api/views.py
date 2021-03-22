@@ -1943,6 +1943,13 @@ def molecule_output_view(request):
     data = _generate_output_view_data(request)
     return Response(data)
 
+
+@api_view()
+def table_output_view(request):
+    data = _generate_output_view_data(request)
+    return Response(data)
+
+
 def _generate_output_view_data(request):
     params = request.GET.copy()
     provider_id = params.pop('provider-id')[0]

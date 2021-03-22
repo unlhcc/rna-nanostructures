@@ -48,6 +48,16 @@ class GLMolViewProvider:
         }
 
 
+class TableViewProvider:
+    display_type = 'table'
+    name = 'Table View'
+
+    def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
+        return {
+            'csv': output_file
+        }
+
+
 class ParameterizedNotebookViewProvider:
     display_type = 'notebook'
     name = "Example Parameterized Notebook View"
