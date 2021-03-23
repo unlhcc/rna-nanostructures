@@ -2,7 +2,7 @@ import { utils } from "django-airavata-api";
 
 // Set to true to enable test mode, which will use the test_output_file
 // attribute on the Output View Provider class instead of the actual output file
-const TEST_MODE = true;
+const TEST_MODE = false;
 
 export default class OutputViewDataLoader {
   constructor({ url, experimentId, experimentOutputName, providerId }) {

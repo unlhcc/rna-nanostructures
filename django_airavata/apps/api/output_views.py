@@ -38,13 +38,17 @@ class GLMolViewProvider:
     display_type = 'molecule'
     name = 'GLMol View'
 
-    file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","moleculeViewer")
-    test_output_file = file_path + "/input.pdb"
+    # file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","moleculeViewer")
+    # test_output_file = file_path + "/input.pdb"
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
         # Pass the output file to the GLMol provider
+        pdb_dict = dict()
+        for f in output_file:
+            name = os.path.basename(f.name)
+            pdb_dict[name] = f
         return {
-            'pdb': output_file
+            'pdb': pdb_dict
         }
 
 
@@ -196,6 +200,14 @@ def generate_data(request,
     # TODO: add experiment_output_dir
     # convert the extra/interactive arguments to appropriate types
     kwargs = _convert_params_to_type(output_view_provider, kwargs)
+    if (output_view_provider_id == "molecule_viewer"):
+        return _generate_multifile_data(request,
+                        output_view_provider,
+                        experiment_output,
+                        experiment,
+                        test_mode=test_mode,
+                        **kwargs)
+
     return _generate_data(request,
                           output_view_provider,
                           experiment_output,
@@ -203,6 +215,52 @@ def generate_data(request,
                           test_mode=test_mode,
                           **kwargs)
 
+def _generate_multifile_data(request,
+                   output_view_provider,
+                   experiment_output,
+                   experiment,
+                   test_mode=False,
+                   **kwargs):
+    output_files = []
+    # test_mode can only be used in DEBUG=True mode
+    if test_mode and settings.DEBUG:
+        test_output_file = getattr(output_view_provider,
+                                   'test_output_file',
+                                   None)
+        if test_output_file is None:
+            raise Exception(f"test_output_file is not set on {output_view_provider}")
+        logger.info(f"Using {test_output_file} instead of regular output file")
+        output_file = open(test_output_file, 'rb')
+        output_files.append(output_file)
+
+    elif (experiment_output.value and
+          experiment_output.type in (DataType.URI,
+                                     DataType.URI_COLLECTION,
+                                     DataType.STDOUT,
+                                     DataType.STDERR) and
+            experiment_output.value.startswith("airavata-dp")):
+        data_product_uris = experiment_output.value.split(",")
+        data_products = map(lambda dpid:
+                            request.airavata_client.getDataProduct(request.authz_token,
+                                                                   dpid),
+                            data_product_uris)
+        for data_product in data_products:
+            if user_storage.exists(request, data_product):
+                output_file = user_storage.open_file(request, data_product)
+                output_files.append(output_file)
+
+    generate_data_func = output_view_provider.generate_data
+    method_sig = inspect.signature(generate_data_func)
+    if 'output_files' in method_sig.parameters:
+        generate_data_func = partial(generate_data_func, output_files=output_files)
+    # TODO: convert experiment and experiment_output to dict/JSON
+    data = generate_data_func(request,
+                              experiment_output,
+                              experiment,
+                              output_file=output_files if len(output_files) > 0 else None,
+                              **kwargs)
+    _process_interactive_params(data)
+    return data
 
 def _generate_data(request,
                    output_view_provider,
