@@ -1945,7 +1945,7 @@ def molecule_output_view(request):
 
 
 @api_view()
-def table_output_view(request):
+def pdb_table_output_view(request):
     data = _generate_output_view_data(request)
     return Response(data)
 

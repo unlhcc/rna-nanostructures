@@ -104,8 +104,8 @@ urlpatterns = [
         views.link_output_view, name="link-output"),
     url(r'^molecule-output',
         views.molecule_output_view, name="molecule-output"),
-    url(r'^table-output',
-        views.table_output_view, name="table-output"),
+    url(r'^pdb-table-output',
+        views.pdb_table_output_view, name="pdb-table-output"),
 ]
 
 urlpatterns = router.urls + format_suffix_patterns(urlpatterns)

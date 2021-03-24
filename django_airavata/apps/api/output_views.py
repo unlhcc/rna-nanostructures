@@ -48,9 +48,9 @@ class GLMolViewProvider:
         }
 
 
-class TableViewProvider:
-    display_type = 'table'
-    name = 'Table View'
+class PDBTableViewProvider:
+    display_type = 'pdb-table'
+    name = 'PDB Table View'
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
         return {

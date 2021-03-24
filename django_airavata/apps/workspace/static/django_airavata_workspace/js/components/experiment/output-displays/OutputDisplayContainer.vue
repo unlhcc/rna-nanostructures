@@ -38,7 +38,7 @@ import NotebookOutputDisplay from "./NotebookOutputDisplay";
 import InteractiveParametersPanel from "./interactive-parameters/InteractiveParametersPanel";
 import OutputViewDataLoader from "./OutputViewDataLoader";
 import MoleculeOutputDisplay from "./MoleculeOutputDisplay";
-import TableOutputDisplay from "./TableOutputDisplay";
+import PDBTableOutputDisplay from "./PDBTableOutputDisplay";
 
 export default {
   name: "output-viewer-container",
@@ -69,7 +69,7 @@ export default {
     LinkOutputDisplay,
     NotebookOutputDisplay,
     MoleculeOutputDisplay,
-    TableOutputDisplay,
+    PDBTableOutputDisplay,
     InteractiveParametersPanel
   },
   created() {
@@ -120,8 +120,8 @@ export default {
           url: "/api/molecule-output/",
         },
         table: {
-          component: "table-output-display",
-          url: "/api/table-output"
+          component: "pdb-table-output-display",
+          url: "/api/pdb-table-output"
         }
       };
     },
