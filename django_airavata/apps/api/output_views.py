@@ -49,8 +49,13 @@ class GLMolViewProvider:
 
 
 class PDBTableViewProvider:
-    display_type = 'pdb-table'
+    display_type = 'pdb_table'
     name = 'PDB Table View'
+
+    file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","PDBTableViewer")
+    test_output_file = file_path + "/default.scores"
+
+    print("haha, this code doesn't ")
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
         return {
