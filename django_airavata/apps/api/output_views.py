@@ -34,9 +34,9 @@ class DefaultViewProvider:
         }
 
 
-class GLMolViewProvider:
+class MoleculeViewProvider:
     display_type = 'molecule'
-    name = 'GLMol View'
+    name = 'Molecule View'
 
     file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","moleculeViewer")
     test_output_file = file_path + "/input.pdb"
@@ -54,8 +54,6 @@ class PDBTableViewProvider:
 
     file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","PDBTableViewer")
     test_output_file = file_path + "/default.scores"
-
-    print("haha, this code doesn't ")
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
         return {
