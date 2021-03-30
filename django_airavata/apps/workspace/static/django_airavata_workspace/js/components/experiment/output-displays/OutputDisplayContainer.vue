@@ -37,8 +37,8 @@ import LinkOutputDisplay from "./LinkOutputDisplay";
 import NotebookOutputDisplay from "./NotebookOutputDisplay";
 import InteractiveParametersPanel from "./interactive-parameters/InteractiveParametersPanel";
 import OutputViewDataLoader from "./OutputViewDataLoader";
+import PdbTableOutputDisplay from "./PdbTableOutputDisplay";
 import MoleculeOutputDisplay from "./MoleculeOutputDisplay";
-import PDBTableOutputDisplay from "./PDBTableOutputDisplay";
 
 export default {
   name: "output-viewer-container",
@@ -69,7 +69,7 @@ export default {
     LinkOutputDisplay,
     NotebookOutputDisplay,
     MoleculeOutputDisplay,
-    PDBTableOutputDisplay,
+    PdbTableOutputDisplay,
     InteractiveParametersPanel
   },
   created() {
@@ -119,9 +119,9 @@ export default {
           component: "molecule-output-display",
           url: "/api/molecule-output/",
         },
-        table: {
+        pdb_table: {
           component: "pdb-table-output-display",
-          url: "/api/pdb-table-output"
+          url: "/api/pdb-table-output/",
         }
       };
     },
@@ -136,6 +136,7 @@ export default {
       }
     },
     outputDataURL() {
+      
       if (this.displayType in this.displayTypeData) {
         return this.displayTypeData[this.displayType].url;
       } else {
@@ -153,7 +154,7 @@ export default {
     },
   },
   methods: {
-    selectView(outputView) {
+    selectView(outputView) {     
       this.currentView = outputView;
       if (this.outputDataURL === null) {
         this.loader = null;
