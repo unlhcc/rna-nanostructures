@@ -34,14 +34,17 @@ export default {
         {
           label: 'Design Number',
           field: 'name',
+          width: '8px',
         },
         {
           label: 'Design Score',
           field: 'score',
+          width: '10px',
         },
         {
           label: 'Design Sequence',
           field: 'sequence',
+          width: '50px',
         },
         {
           label: 'Design Structure',
@@ -50,26 +53,32 @@ export default {
         {
           label: 'Motifs Uses',
           field: 'motifs',
+          width: '25px',
         },
         {
           label: 'Opt Num',
           field: 'opt',
+          width: '10px',
         },
         {
           label: 'Opt Seq',
           field: 'optSeq',
+          width: '50px',
         },
         {
           label: 'Opt Score',
           field: 'optScore',
+          width: '10px',
         },
         {
           label: 'Thermo Fluc Best Score',
           field: 'thermoBest',
+          width: '10px',
         },
         {
           label: 'Hit Count',
           field: 'hit',
+          width: '12px',
         },
       ],
       rows: [],
