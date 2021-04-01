@@ -3,6 +3,7 @@
     <vue-good-table
       :columns="columns"
       :rows="rows"
+      styleClass="vgt-table condensed bordered striped"
       :pagination-options="{
         enabled:true,
         mode:'records',
@@ -32,19 +33,17 @@ export default {
     return {
       columns: [
         {
-          label: 'Design Number',
+          label: '#',
           field: 'name',
-          width: '8px',
         },
         {
-          label: 'Design Score',
+          label: 'Score',
           field: 'score',
-          width: '10px',
         },
         {
           label: 'Design Sequence',
           field: 'sequence',
-          width: '50px',
+          width: '200px'
         },
         {
           label: 'Design Structure',
@@ -53,32 +52,30 @@ export default {
         {
           label: 'Motifs Uses',
           field: 'motifs',
-          width: '25px',
         },
         {
           label: 'Opt Num',
           field: 'opt',
-          width: '10px',
+          width: '120px'
         },
         {
           label: 'Opt Seq',
           field: 'optSeq',
-          width: '50px',
         },
         {
           label: 'Opt Score',
           field: 'optScore',
-          width: '10px',
+          width: '120px'
         },
         {
           label: 'Thermo Fluc Best Score',
           field: 'thermoBest',
-          width: '10px',
+          width: '220px'
         },
         {
           label: 'Hit Count',
           field: 'hit',
-          width: '12px',
+          width: '120px'
         },
       ],
       rows: [],
