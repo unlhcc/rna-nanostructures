@@ -1,5 +1,52 @@
 <template>
   <div>
+    <b-dropdown id="dropdown-1" text="Column Visibility" class="m-md-2">
+      <b-dropdown-item v-on:click="toggleScore">
+        <b-form-checkbox :checked="!this.columns[1].hidden">
+          Score Display
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleOptSeq">
+        <b-form-checkbox :checked="!this.columns[2].hidden">
+          Opt Sequence
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleDesignStructure">
+        <b-form-checkbox :checked="!this.columns[3].hidden">
+          Design Structure
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleDesignScore">
+        <b-form-checkbox :checked="!this.columns[4].hidden">
+          Design Score
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleDesignSeq">
+        <b-form-checkbox :checked="!this.columns[5].hidden">
+          Design Sequence
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleMotifs">
+        <b-form-checkbox :checked="!this.columns[6].hidden">
+          Motifs Used
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleOptNum">
+        <b-form-checkbox :checked="!this.columns[7].hidden">
+          Opt Number
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleThermo">
+        <b-form-checkbox :checked="!this.columns[8].hidden">
+          Thermo Fluc Best Score
+        </b-form-checkbox>
+      </b-dropdown-item>
+      <b-dropdown-item v-on:click="toggleHit">
+        <b-form-checkbox :checked="!this.columns[9].hidden">
+          Hit Count
+        </b-form-checkbox>
+      </b-dropdown-item>
+    </b-dropdown>
     <vue-good-table
       :columns="columns"
       :rows="rows"
@@ -38,44 +85,53 @@ export default {
         },
         {
           label: 'Score',
-          field: 'score',
-        },
-        {
-          label: 'Design Sequence',
-          field: 'sequence',
-          width: '200px'
-        },
-        {
-          label: 'Design Structure',
-          field: 'structure',
-        },
-        {
-          label: 'Motifs Uses',
-          field: 'motifs',
-        },
-        {
-          label: 'Opt Num',
-          field: 'opt',
-          width: '120px'
+          field: 'optScore',
+          width: '120px',
+          hidden: false,
         },
         {
           label: 'Opt Seq',
           field: 'optSeq',
+          hidden: false,
         },
         {
-          label: 'Opt Score',
-          field: 'optScore',
-          width: '120px'
+          label: 'Design Structure',
+          field: 'structure',
+          hidden: false,
+        },
+        {
+          label: 'Design Score',
+          field: 'score',
+          hidden: true,
+        },
+        {
+          label: 'Design Sequence',
+          field: 'sequence',
+          width: '200px',
+          hidden: true,
+        },
+        {
+          label: 'Motifs Uses',
+          field: 'motifs',
+          hidden: true,
+        },
+        {
+          label: 'Opt Num',
+          field: 'opt',
+          width: '120px',
+          hidden: true,
         },
         {
           label: 'Thermo Fluc Best Score',
           field: 'thermoBest',
-          width: '220px'
+          width: '220px',
+          hidden: true,
         },
         {
           label: 'Hit Count',
           field: 'hit',
-          width: '120px'
+          width: '120px',
+          hidden: true,
         },
       ],
       rows: [],
@@ -104,5 +160,35 @@ export default {
       }
     }
   },
+  methods: {
+    toggleScore: function(){
+      this.$set(this.columns[1], 'hidden', !this.columns[1].hidden);
+      
+    },
+    toggleOptSeq: function(){
+      this.$set(this.columns[2], 'hidden', !this.columns[2].hidden);
+    },
+    toggleDesignStructure: function(){
+      this.$set(this.columns[3], 'hidden', !this.columns[3].hidden);
+    },
+    toggleDesignScore: function(){
+      this.$set(this.columns[4], 'hidden', !this.columns[4].hidden)
+    },
+    toggleDesignSeq: function(){
+      this.$set(this.columns[5], 'hidden', !this.columns[5].hidden)
+    },
+    toggleMotifs: function(){
+      this.$set(this.columns[6], 'hidden', !this.columns[6].hidden);
+    },
+    toggleOptNum: function(){
+      this.$set(this.columns[7], 'hidden', !this.columns[7].hidden);
+    },
+    toggleThermo: function(){
+      this.$set(this.columns[8], 'hidden', !this.columns[8].hidden);
+    },
+    toggleHit: function(){
+      this.$set(this.columns[9], 'hidden', !this.columns[9].hidden);
+    },
+  }
 };
 </script>
