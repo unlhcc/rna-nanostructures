@@ -1,6 +1,13 @@
 <template>
   <div>
-    {{ dataContainer }}
+    <b-dropdown v-if="showMenu" :text="currentPdb" class="m-md-2">
+      <b-dropdown-item
+      v-for="(value, name) in viewData['pdb']"
+      :key="name"
+      @click="setCurrentPdb(name)"
+      >{{ name }}
+      </b-dropdown-item>
+    </b-dropdown>
     <div id="container"></div>
     <canvas id="transformBallAndStick"></canvas>
   </div>
@@ -17,74 +24,72 @@
         required: true,
       },
     },
-    mounted: function(){
+    mounted(){
       this.$nextTick(function(){
-        var link = document.createElement('link');
-        link.rel = "styleSheet";
-        link.href = "../../../static/glmol/ChemDoodleWeb.css"
-        link.type = "text/css";
+        if(!document.getElementById("chemdoodle-script")){
+          var link = document.createElement("link");
+          link.rel = "styleSheet";
+          link.href = "../../../static/glmol/ChemDoodleWeb.css"
+          link.type = "text/css";
 
-        var script = document.createElement('script');
-        script.type = "text/javascript";
-        script.src = "../../../static/glmol/ChemDoodleWeb.js";
-        
-        var head = document.getElementsByTagName("head")[0];
-        
-        head.append(script);
-        head.append(link);
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = "../../../static/glmol/ChemDoodleWeb.js";
+          script.id = "chemdoodle-script";
+          
+          var head = document.getElementsByTagName("head")[0];
+          
+          head.append(script);
+          head.append(link);
+        }
       })
     },
+    beforeUpdate(){
+      if (this.moleculeViewer === undefined) {
+        this.moleculeViewer = this.createMoleculeViewer();
+      }
+    },
+    data() {
+      return {
+        currentPdb: undefined,
+        moleculeViewer: undefined
+      }
+    },
+    watch: {
+      currentPdb: function () {
+        this.changePdb(this.currentPdb);
+      }
+    },
     computed: {
-      dataContainer() {       
-        if (this.viewData['pdb']) {
-          const files = this.viewData['pdb'];
-          let transformBallAndStick = new ChemDoodle.TransformCanvas3D('transformBallAndStick', 500, 500);
-          transformBallAndStick.styles.set3DRepresentation('Ball and Stick');
-          transformBallAndStick.styles.atoms_useVDWDiameters_3D = false;
-          transformBallAndStick.styles.backgroundColor = 'black';
-          let changePdb = function(name) {
-            let molecule = ChemDoodle.readPDB(files[name].join(''));
-            transformBallAndStick.loadMolecule(molecule);
-          }
-          let size = 0;
-          for (var tempKey in files) {
-              if (files.hasOwnProperty(tempKey)){
-                size++;
-              }
-          }
-
-          // eslint-disable-next-line no-console
-          console.log(size);
-
-          if(size === 1) {
-              changePdb(tempKey);
-          } else {
-            var select = document.createElement("select");
-            select.name = "pdbs";
-            select.id = "pdbs";
-            select.style = "margin-bottom: 1em";
-            select.onchange = function(value) {
-              changePdb(value.target.selectedOptions[0].label);
+      showMenu() {
+        let size = 0
+        for (var tempKey in this.viewData["pdb"]) {
+          if (this.viewData["pdb"].hasOwnProperty(tempKey)){
+            if(size === 0){
+              this.setCurrentPdb(tempKey);
             }
-            
-            let flag = false;
-            for (var key in files) {
-              if (files.hasOwnProperty(key)) {      
-                if (!flag){
-                  changePdb(key);
-                  flag = true;
-                }     
-                var option = document.createElement("option");
-                option.value = key;
-                option.text = key;
-                select.appendChild(option);
-              }
-            }        
-            document.getElementById("container").appendChild(select);
+            size++;
           }
         }
-        return null;
+        return size > 1;
       }
+    },
+    methods: {
+      createMoleculeViewer() {
+        let viewer = new ChemDoodle.TransformCanvas3D(
+          "transformBallAndStick", 500, 500);
+        viewer.styles.set3DRepresentation("Ball and Stick");
+        viewer.styles.atoms_useVDWDiameters_3D = false;
+        viewer.styles.backgroundColor = "black";
+        return viewer;
+      },
+      setCurrentPdb(key){
+        this.currentPdb = key;
+      },
+      changePdb(name) {
+        let molecule = ChemDoodle.readPDB(this.viewData["pdb"][name].join(""));
+        this.moleculeViewer.loadMolecule(molecule);
+      },
     }
   };
 </script>
