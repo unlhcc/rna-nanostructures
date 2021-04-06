@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-dropdown id="dropdown-1" text="Column Visibility" class="m-md-2">
+    <b-dropdown id="visibility-dropdown" text="Column Visibility" class="m-md-2">
       <b-dropdown-item v-on:click="toggleScore">
         <b-form-checkbox :checked="!this.columns[1].hidden">
           Score Display
@@ -52,17 +52,18 @@
       :rows="rows"
       styleClass="vgt-table condensed bordered striped"
       :pagination-options="{
-        enabled:true,
-        mode:'records',
-        perPage:'15',
+        enabled: true,
+        mode: 'records',
+        perPage: '15',
       }"
     />
+    <p><em>Hover over a column to read a brief description</em></p>
   </div>
 </template>
 
 <script>
-import 'vue-good-table/dist/vue-good-table.css'
-import { VueGoodTable } from 'vue-good-table';
+import "vue-good-table/dist/vue-good-table.css"
+import { VueGoodTable } from "vue-good-table";
 
 export default {
   name: "pdb-table-output-display",
@@ -80,57 +81,57 @@ export default {
     return {
       columns: [
         {
-          label: '#',
-          field: 'name',
+          label: "#",
+          field: "name",
         },
         {
-          label: 'Score',
-          field: 'optScore',
-          width: '120px',
+          label: "Score",
+          field: "optScore",
+          width: "120px",
           hidden: false,
         },
         {
-          label: 'Opt Seq',
-          field: 'optSeq',
+          label: "Opt Seq",
+          field: "optSeq",
           hidden: false,
         },
         {
-          label: 'Design Structure',
-          field: 'structure',
+          label: "Design Structure",
+          field: "structure",
           hidden: false,
         },
         {
-          label: 'Design Score',
-          field: 'score',
+          label: "Design Score",
+          field: "score",
           hidden: true,
         },
         {
-          label: 'Design Sequence',
-          field: 'sequence',
-          width: '200px',
+          label: "Design Sequence",
+          field: "sequence",
+          width: "200px",
           hidden: true,
         },
         {
-          label: 'Motifs Uses',
-          field: 'motifs',
+          label: "Motifs Uses",
+          field: "motifs",
           hidden: true,
         },
         {
-          label: 'Opt Num',
-          field: 'opt',
-          width: '120px',
+          label: "Opt Num",
+          field: "opt",
+          width: "120px",
           hidden: true,
         },
         {
-          label: 'Thermo Fluc Best Score',
-          field: 'thermoBest',
-          width: '220px',
+          label: "Thermo Fluc Best Score",
+          field: "thermoBest",
+          width: "220px",
           hidden: true,
         },
         {
-          label: 'Hit Count',
-          field: 'hit',
-          width: '120px',
+          label: "Hit Count",
+          field: "hit",
+          width: "120px",
           hidden: true,
         },
       ],
@@ -142,18 +143,26 @@ export default {
       deep: true,
       handler() {
         for (let i = 1; i < this.viewData["csv"].length; i++) {
-          let array = this.viewData["csv"][i].split(',');
+          let array = this.viewData["csv"][i].split(",");
+
+          // Motifs
+          array[4] = array[4].replaceAll(";", "; ")
+          // Design Sequence
+          array[2] = this.splitInto(array[2], 33).join(" ")
+          // Opt Sequence
+          array[6] = this.splitInto(array[6], 33).join(" ")
+
           let row = {
-            name:array[0],
-            score:array[1],
-            sequence:array[2],
-            structure:array[3],
-            motifs:array[4],
-            opt:array[5],
-            optSeq:array[6],
-            optScore:array[7],
-            thermoBest:array[8],
-            hit:array[9]
+            name: array[0],
+            score: array[1],
+            sequence: array[2],
+            structure: array[3],
+            motifs: array[4],
+            opt: array[5],
+            optSeq: array[6],
+            optScore: array[7],
+            thermoBest: array[8],
+            hit: array[9]
           };
           this.rows.push(row);
         }
@@ -161,33 +170,36 @@ export default {
     }
   },
   methods: {
+    splitInto: function(str, len){
+      var regex = new RegExp(".{1," + len + "}", "g");
+      return str.match(regex);
+    },
     toggleScore: function(){
-      this.$set(this.columns[1], 'hidden', !this.columns[1].hidden);
-      
+      this.$set(this.columns[1], "hidden", !this.columns[1].hidden);
     },
     toggleOptSeq: function(){
-      this.$set(this.columns[2], 'hidden', !this.columns[2].hidden);
+      this.$set(this.columns[2], "hidden", !this.columns[2].hidden);
     },
     toggleDesignStructure: function(){
-      this.$set(this.columns[3], 'hidden', !this.columns[3].hidden);
+      this.$set(this.columns[3], "hidden", !this.columns[3].hidden);
     },
     toggleDesignScore: function(){
-      this.$set(this.columns[4], 'hidden', !this.columns[4].hidden)
+      this.$set(this.columns[4], "hidden", !this.columns[4].hidden);
     },
     toggleDesignSeq: function(){
-      this.$set(this.columns[5], 'hidden', !this.columns[5].hidden)
+      this.$set(this.columns[5], "hidden", !this.columns[5].hidden);
     },
     toggleMotifs: function(){
-      this.$set(this.columns[6], 'hidden', !this.columns[6].hidden);
+      this.$set(this.columns[6], "hidden", !this.columns[6].hidden);
     },
     toggleOptNum: function(){
-      this.$set(this.columns[7], 'hidden', !this.columns[7].hidden);
+      this.$set(this.columns[7], "hidden", !this.columns[7].hidden);
     },
     toggleThermo: function(){
-      this.$set(this.columns[8], 'hidden', !this.columns[8].hidden);
+      this.$set(this.columns[8], "hidden", !this.columns[8].hidden);
     },
     toggleHit: function(){
-      this.$set(this.columns[9], 'hidden', !this.columns[9].hidden);
+      this.$set(this.columns[9], "hidden", !this.columns[9].hidden);
     },
   }
 };
