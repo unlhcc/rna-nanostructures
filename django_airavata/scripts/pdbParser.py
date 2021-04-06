@@ -8,16 +8,11 @@ def validate_pdb(file_name):
         structure_id = "inputFile"
         filename = file_name
         structure = parser.get_structure(structure_id, filename)
-        atoms = structure.get_atoms()
-        atomCount = 0
-        for atom in atoms:
-            atomCount += 1
-        print("Amount of atoms: " + str(atomCount))
-        return True
+
+        return None
     except (Exception) as e:
-        print("File contains irregularities.")
-        print(e)
-        return False
+        
+        return e
 
 
 class TestValidator(TestCase):

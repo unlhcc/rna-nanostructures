@@ -105,6 +105,8 @@ urlpatterns = [
         views.image_output_view, name="image-output"),
     url(r'^link-output',
         views.link_output_view, name="link-output"),
+    url(r'^pdb-validator',
+        views.pdb_validation),
 ]
 
 if logger.isEnabledFor(logging.DEBUG):

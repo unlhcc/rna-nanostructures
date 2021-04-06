@@ -59,6 +59,8 @@ from . import (
     view_utils
 )
 
+from django_airavata.scrips.pdbParser import validate_pdb
+
 READ_PERMISSION_TYPE = '{}:READ'
 
 log = logging.getLogger(__name__)
@@ -1949,3 +1951,8 @@ def _generate_output_view_data(request):
                                       experiment_output_name,
                                       experiment_id,
                                       **params.dict())
+
+
+def pdb_validation(request):
+    #maybe use try catch here
+    return validate_pdb(request.file)

@@ -1,11 +1,13 @@
 import MaxLengthValidator from "./MaxLengthValidator";
 import MinLengthValidator from "./MinLengthValidator";
 import RegularExpressionValidator from "./RegularExpressionValidator";
+import PDBFileValidator from "./PDBFileValidator";
 
 const VALIDATOR_MAPPING = {
   "max-length": MaxLengthValidator,
   "min-length": MinLengthValidator,
   regex: RegularExpressionValidator,
+  pdbfile: PDBFileValidator, 
 };
 export default class ValidatorFactory {
   validate(validationsConfig, value) {
