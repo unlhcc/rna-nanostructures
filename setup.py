@@ -54,7 +54,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application'
     ],
-    entry_points = """
+    entry_points="""
         [airavata.output_view_providers]
         molecule_viewer = django_airavata.apps.api.output_views:MoleculeViewProvider
         pdb_table_viewer = django_airavata.apps.api.output_views:PDBTableViewProvider

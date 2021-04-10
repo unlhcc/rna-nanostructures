@@ -7,7 +7,6 @@ from functools import partial
 
 import nbformat
 import papermill as pm
-import pickle
 from airavata.model.application.io.ttypes import DataType
 from airavata_django_portal_sdk import user_storage
 from django.conf import settings
@@ -56,7 +55,7 @@ class PDBTableViewProvider:
     display_type = 'pdb_table'
     name = 'PDB Table View'
 
-    file_path = os.path.join(BASE_DIR+"/static/django_airavata_api/tests/","PDBTableViewer")
+    file_path = os.path.join(BASE_DIR + "/static/django_airavata_api/tests/", "PDBTableViewer")
     test_output_file = file_path + "/default.scores"
 
     def generate_data(self, request, experiment_output, experiment, output_file=None, **kwargs):
@@ -215,11 +214,11 @@ def generate_data(request,
     kwargs = _convert_params_to_type(output_view_provider, kwargs)
     if (output_view_provider_id == "molecule_viewer"):
         return _generate_multifile_data(request,
-                        output_view_provider,
-                        experiment_output,
-                        experiment,
-                        test_mode=test_mode,
-                        **kwargs)
+                                        output_view_provider,
+                                        experiment_output,
+                                        experiment,
+                                        test_mode=test_mode,
+                                        **kwargs)
 
     return _generate_data(request,
                           output_view_provider,
@@ -228,12 +227,13 @@ def generate_data(request,
                           test_mode=test_mode,
                           **kwargs)
 
+
 def _generate_multifile_data(request,
-                   output_view_provider,
-                   experiment_output,
-                   experiment,
-                   test_mode=False,
-                   **kwargs):
+                             output_view_provider,
+                             experiment_output,
+                             experiment,
+                             test_mode=False,
+                             **kwargs):
     output_files = []
     # test_mode can only be used in DEBUG=True mode
     if test_mode and settings.DEBUG:
@@ -274,6 +274,7 @@ def _generate_multifile_data(request,
                               **kwargs)
     _process_interactive_params(data)
     return data
+
 
 def _generate_data(request,
                    output_view_provider,
