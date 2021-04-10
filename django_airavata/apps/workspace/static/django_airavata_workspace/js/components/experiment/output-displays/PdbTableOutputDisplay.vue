@@ -26,11 +26,6 @@
           Motifs Used
         </b-form-checkbox>
       </b-dropdown-item>
-      <b-dropdown-item v-on:click="toggleOptNum">
-        <b-form-checkbox :checked="!this.columns[6].hidden">
-          Opt Number
-        </b-form-checkbox>
-      </b-dropdown-item>
     </b-dropdown>
     <p><em>Hover over a column header to read a brief description</em></p>
     <vue-good-table
@@ -101,13 +96,6 @@ export default {
           field: "motifs",
           tooltip: "The motifs from the Motif library that were chosen",
           hidden: true,
-        },
-        {
-          label: "Opt Num",
-          field: "opt",
-          tooltip: "",
-          width: "120px",
-          hidden: true,
         }
       ],
       rows: [],
@@ -132,7 +120,6 @@ export default {
             sequence: array[2],
             structure: array[3],
             motifs: array[4],
-            opt: array[5],
             optSeq: array[6],
             optScore: array[7],
           };
@@ -160,9 +147,6 @@ export default {
     },
     toggleMotifs: function(){
       this.$set(this.columns[5], "hidden", !this.columns[5].hidden);
-    },
-    toggleOptNum: function(){
-      this.$set(this.columns[6], "hidden", !this.columns[6].hidden);
     },
   }
 };
