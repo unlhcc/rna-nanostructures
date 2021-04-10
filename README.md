@@ -27,8 +27,11 @@ need one of these versions installed locally.
 
 You'll also need Node.js and yarn to build the JavaScript frontend code. Please
 install
-[the most recent LTS version of Node.js](https://nodejs.org/en/download/) and
-[the Yarn package manager](https://yarnpkg.com).
+[the most recent LTS version of Node.js](https://nodejs.org/en/download/). You
+can also use [nvm](https://github.com/nvm-sh/nvm) to manage the Node.js install.
+If you have nvm installed you can run `nvm install && nvm use` before running
+any yarn commands. See [the Yarn package manager](https://yarnpkg.com) for
+information on how to install yarn.
 
 1.  Checkout this project and create a virtual environment.
 
@@ -146,6 +149,16 @@ Please send feedback to the mailing list at <dev@airavata.apache.org>. If you
 encounter bugs or would like to request a new feature you can do so in the
 [Airavata Jira project](https://issues.apache.org/jira/projects/AIRAVATA) (just
 select the _Django Portal_ component when you make your issue).
+
+## Customization
+
+See the Customization Guide in the
+[documentation](https://apache-airavata-django-portal.readthedocs.io/en/latest/)
+for information on how to customize the Airavata Django Portal user interface.
+To get started we recommend going through the
+[Gateways Tutorial](https://apache-airavata-django-portal.readthedocs.io/en/latest/tutorial/gateways_tutorial/).
+This tutorial covers the different ways that the user interface can be
+customized.
 
 ## Contributing
 
