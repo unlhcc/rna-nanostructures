@@ -16,37 +16,23 @@
           Design Structure
         </b-form-checkbox>
       </b-dropdown-item>
-      <b-dropdown-item v-on:click="toggleDesignScore">
-        <b-form-checkbox :checked="!this.columns[4].hidden">
-          Design Score
-        </b-form-checkbox>
-      </b-dropdown-item>
       <b-dropdown-item v-on:click="toggleDesignSeq">
-        <b-form-checkbox :checked="!this.columns[5].hidden">
+        <b-form-checkbox :checked="!this.columns[4].hidden">
           Design Sequence
         </b-form-checkbox>
       </b-dropdown-item>
       <b-dropdown-item v-on:click="toggleMotifs">
-        <b-form-checkbox :checked="!this.columns[6].hidden">
+        <b-form-checkbox :checked="!this.columns[5].hidden">
           Motifs Used
         </b-form-checkbox>
       </b-dropdown-item>
       <b-dropdown-item v-on:click="toggleOptNum">
-        <b-form-checkbox :checked="!this.columns[7].hidden">
+        <b-form-checkbox :checked="!this.columns[6].hidden">
           Opt Number
         </b-form-checkbox>
       </b-dropdown-item>
-      <b-dropdown-item v-on:click="toggleThermo">
-        <b-form-checkbox :checked="!this.columns[8].hidden">
-          Thermo Fluc Best Score
-        </b-form-checkbox>
-      </b-dropdown-item>
-      <b-dropdown-item v-on:click="toggleHit">
-        <b-form-checkbox :checked="!this.columns[9].hidden">
-          Hit Count
-        </b-form-checkbox>
-      </b-dropdown-item>
     </b-dropdown>
+    <p><em>Hover over a column header to read a brief description</em></p>
     <vue-good-table
       :columns="columns"
       :rows="rows"
@@ -57,7 +43,6 @@
         perPage: '15',
       }"
     />
-    <p><em>Hover over a column to read a brief description</em></p>
   </div>
 </template>
 
@@ -83,57 +68,47 @@ export default {
         {
           label: "#",
           field: "name",
+          tooltip: "Design run number",
         },
         {
           label: "Score",
           field: "optScore",
+          tooltip: "Accuracy to the target base pair: lower is better",
           width: "120px",
           hidden: false,
         },
         {
           label: "Opt Seq",
           field: "optSeq",
+          tooltip: "Sequence after filling in the helical regions",
           hidden: false,
         },
         {
           label: "Design Structure",
           field: "structure",
+          tooltip: "A representation of the design",
           hidden: false,
-        },
-        {
-          label: "Design Score",
-          field: "score",
-          hidden: true,
         },
         {
           label: "Design Sequence",
           field: "sequence",
+          tooltip: "Unoptimized sequence with N's for helices",
           width: "200px",
           hidden: true,
         },
         {
           label: "Motifs Uses",
           field: "motifs",
+          tooltip: "The motifs from the Motif library that were chosen",
           hidden: true,
         },
         {
           label: "Opt Num",
           field: "opt",
+          tooltip: "",
           width: "120px",
           hidden: true,
-        },
-        {
-          label: "Thermo Fluc Best Score",
-          field: "thermoBest",
-          width: "220px",
-          hidden: true,
-        },
-        {
-          label: "Hit Count",
-          field: "hit",
-          width: "120px",
-          hidden: true,
-        },
+        }
       ],
       rows: [],
     }
@@ -154,15 +129,12 @@ export default {
 
           let row = {
             name: array[0],
-            score: array[1],
             sequence: array[2],
             structure: array[3],
             motifs: array[4],
             opt: array[5],
             optSeq: array[6],
             optScore: array[7],
-            thermoBest: array[8],
-            hit: array[9]
           };
           this.rows.push(row);
         }
@@ -183,23 +155,14 @@ export default {
     toggleDesignStructure: function(){
       this.$set(this.columns[3], "hidden", !this.columns[3].hidden);
     },
-    toggleDesignScore: function(){
+    toggleDesignSeq: function(){
       this.$set(this.columns[4], "hidden", !this.columns[4].hidden);
     },
-    toggleDesignSeq: function(){
+    toggleMotifs: function(){
       this.$set(this.columns[5], "hidden", !this.columns[5].hidden);
     },
-    toggleMotifs: function(){
-      this.$set(this.columns[6], "hidden", !this.columns[6].hidden);
-    },
     toggleOptNum: function(){
-      this.$set(this.columns[7], "hidden", !this.columns[7].hidden);
-    },
-    toggleThermo: function(){
-      this.$set(this.columns[8], "hidden", !this.columns[8].hidden);
-    },
-    toggleHit: function(){
-      this.$set(this.columns[9], "hidden", !this.columns[9].hidden);
+      this.$set(this.columns[6], "hidden", !this.columns[6].hidden);
     },
   }
 };
