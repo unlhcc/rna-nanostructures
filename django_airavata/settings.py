@@ -108,7 +108,8 @@ for entry_point in iter_entry_points(group='airavata.djangoapp'):
     INSTALLED_APPS.append("{}.{}".format(entry_point.module_name,
                                          entry_point.attrs[0]))
 
-OUTPUT_VIEW_PROVIDERS = {}
+OUTPUT_VIEW_PROVIDERS = {
+}
 for entry_point in iter_entry_points(group='airavata.output_view_providers'):
     OUTPUT_VIEW_PROVIDERS[entry_point.name] = entry_point.load()()
 
@@ -215,6 +216,7 @@ MEDIA_URL = '/media/'
 
 # Data storage
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o777
+FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_MAX_FILE_SIZE = 64 * 1024 * 1024  # 64 MB
 FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.MemoryFileUploadHandler',
@@ -299,6 +301,7 @@ WEBPACK_LOADER = {
             'common',
             'dist',
             'webpack-stats.json'),
+        'TIMEOUT': 60,
     },
     'ADMIN': {
         'BUNDLE_DIR_NAME': 'django_airavata_admin/dist/',
@@ -311,6 +314,7 @@ WEBPACK_LOADER = {
             'django_airavata_admin',
             'dist',
             'webpack-stats.json'),
+        'TIMEOUT': 60,
     },
     'DATAPARSERS': {
         'BUNDLE_DIR_NAME': 'django_airavata_dataparsers/dist/',
@@ -323,6 +327,7 @@ WEBPACK_LOADER = {
             'django_airavata_dataparsers',
             'dist',
             'webpack-stats.json'),
+        'TIMEOUT': 60,
     },
     'GROUPS': {
         'BUNDLE_DIR_NAME': 'django_airavata_groups/dist/',
@@ -335,6 +340,7 @@ WEBPACK_LOADER = {
             'django_airavata_groups',
             'dist',
             'webpack-stats.json'),
+        'TIMEOUT': 60,
     },
     'WORKSPACE': {
         'BUNDLE_DIR_NAME': 'django_airavata_workspace/dist/',
@@ -347,6 +353,7 @@ WEBPACK_LOADER = {
             'django_airavata_workspace',
             'dist',
             'webpack-stats.json'),
+        'TIMEOUT': 60,
     },
 }
 

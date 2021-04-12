@@ -1,7 +1,8 @@
 import logging
 
-from django.conf.urls import include, url
+from django.conf.urls import url
 from rest_framework import routers
+from rest_framework.urlpatterns import format_suffix_patterns
 
 from . import views
 
@@ -34,9 +35,6 @@ router.register(r'storage-resources', views.StorageResourceViewSet,
                 basename='storage-resource')
 router.register(r'credential-summaries', views.CredentialSummaryViewSet,
                 basename='credential-summary')
-router.register(r'gateway-resource-profiles',
-                views.GatewayResourceProfileViewSet,
-                basename='gateway-resource-profile')
 router.register(r'storage-preferences',
                 views.StoragePreferenceViewSet,
                 basename='storage-preference')
@@ -50,7 +48,6 @@ router.register(r'unverified-email-users', views.UnverifiedEmailUserViewSet,
 
 app_name = 'django_airavata_api'
 urlpatterns = [
-    url(r'^', include(router.urls)),
     url(r'^upload$', views.upload_input_file, name='upload_input_file'),
     url(r'^tus-upload-finish$', views.tus_upload_finish,
         name='tus_upload_finish'),
@@ -77,7 +74,7 @@ urlpatterns = [
     url(r'^data/movement/scp', views.ScpDataMovementView.as_view(),
         name="scp_ftp_data_movement"),
     url(r'^gateway-resource-profile',
-        views.GetCurrentGatewayResourceProfile.as_view(),
+        views.CurrentGatewayResourceProfile.as_view(),
         name="current_gateway_resource_profile"),
     url(r'^workspace-preferences',
         views.WorkspacePreferencesView.as_view(),
@@ -105,9 +102,18 @@ urlpatterns = [
         views.image_output_view, name="image-output"),
     url(r'^link-output',
         views.link_output_view, name="link-output"),
+<<<<<<< HEAD
     url(r'^pdb-validator',
         views.pdb_validation),
+=======
+    url(r'^molecule-output',
+        views.molecule_output_view, name="molecule-output"),
+    url(r'^pdb-table-output',
+        views.pdb_table_output_view, name="pdb-table-output"),
+>>>>>>> 984fb5383814ed020e0e47b1e76100b324ce99fb
 ]
+
+urlpatterns = router.urls + format_suffix_patterns(urlpatterns)
 
 if logger.isEnabledFor(logging.DEBUG):
     for router_url in router.urls:

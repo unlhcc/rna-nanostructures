@@ -27,14 +27,17 @@ need one of these versions installed locally.
 
 You'll also need Node.js and yarn to build the JavaScript frontend code. Please
 install
-[the most recent LTS version of Node.js](https://nodejs.org/en/download/) and
-[the Yarn package manager](https://yarnpkg.com).
+[the most recent LTS version of Node.js](https://nodejs.org/en/download/). You
+can also use [nvm](https://github.com/nvm-sh/nvm) to manage the Node.js install.
+If you have nvm installed you can run `nvm install && nvm use` before running
+any yarn commands. See [the Yarn package manager](https://yarnpkg.com) for
+information on how to install yarn.
 
 1.  Checkout this project and create a virtual environment.
 
     ```
-    git clone https://github.com/apache/airavata-django-portal.git
-    cd airavata-django-portal
+    git clone https://github.com/cseseniordesign/rna-nanostructures.git
+    cd rna-nanostructures
     python3 -m venv venv
     source venv/bin/activate
     pip install --upgrade pip
@@ -48,12 +51,12 @@ install
       for more details.
 
 2.  Create a local settings file. Copy
-    `django_airavata/settings_local.py.sample` to
+    `django_airavata/settings_local.py.ide` to
     `django_airavata/settings_local.py` and edit the contents to match your
-    Keycloak and Airavata server deployments.
+    Keycloak and Airavata server deployments (see instructions below to know how to run the stack).
 
     ```
-    cp django_airavata/settings_local.py.sample django_airavata/settings_local.py
+    cp django_airavata/settings_local.py.ide django_airavata/settings_local.py
     ```
 
 3.  Run Django migrations
@@ -70,10 +73,10 @@ install
     ./build_js.sh
     ```
 
-5.  Load the default Wagtail CMS pages.
+5.  Load the new RNA Nanostructures Wagtail pages.
 
     ```
-    python manage.py load_cms_data new_default_theme
+    python manage.py load_cms_data rnaNanostructures
     ```
     - For Mac users instead of load_cms_data it has to be loaddata
 
@@ -92,6 +95,10 @@ install
           ```
 
 7.  Point your browser to http://localhost:8000.
+
+## Running the full stack of Airavata for development
+
+To run the Django Portal, it requires that Airavata and its resources are running alongside the portal so that it's able to allow for login and visualization of Airavata related components. To do so, you will need to follow the instructions given on the [apache/airavata github](https://github.com/apache/airavata/tree/develop#build-and-run-docker-distribution-experimental-and-not-recommended-for-production-deployments).
 
 ## Docker instructions
 
@@ -142,6 +149,16 @@ Please send feedback to the mailing list at <dev@airavata.apache.org>. If you
 encounter bugs or would like to request a new feature you can do so in the
 [Airavata Jira project](https://issues.apache.org/jira/projects/AIRAVATA) (just
 select the _Django Portal_ component when you make your issue).
+
+## Customization
+
+See the Customization Guide in the
+[documentation](https://apache-airavata-django-portal.readthedocs.io/en/latest/)
+for information on how to customize the Airavata Django Portal user interface.
+To get started we recommend going through the
+[Gateways Tutorial](https://apache-airavata-django-portal.readthedocs.io/en/latest/tutorial/gateways_tutorial/).
+This tutorial covers the different ways that the user interface can be
+customized.
 
 ## Contributing
 

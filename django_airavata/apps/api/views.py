@@ -29,12 +29,11 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.urls import reverse
-from rest_framework import mixins
+from rest_framework import mixins, status
 from rest_framework.decorators import action, api_view
 from rest_framework.exceptions import ParseError
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from rest_framework.status import HTTP_400_BAD_REQUEST
 from rest_framework.views import APIView
 
 from django_airavata.apps.api.view_utils import (
@@ -280,6 +279,12 @@ class ExperimentViewSet(mixins.CreateModelMixin,
     @action(methods=['post'], detail=True)
     def launch(self, request, experiment_id=None):
         try:
+            experiment = request.airavata_client.getExperiment(
+                self.authz_token, experiment_id)
+            if (experiment.enableEmailNotification):
+                experiment.emailAddresses = [request.user.email]
+            request.airavata_client.updateExperiment(
+                self.authz_token, experiment_id, experiment)
             if getattr(
                 settings,
                 'GATEWAY_DATA_STORE_REMOTE_API',
@@ -296,8 +301,6 @@ class ExperimentViewSet(mixins.CreateModelMixin,
                 r.raise_for_status()
                 return Response(r.json())
             else:
-                experiment = request.airavata_client.getExperiment(
-                    self.authz_token, experiment_id)
                 self._set_storage_id_and_data_dir(experiment)
                 self._move_tmp_input_file_uploads_to_data_dir(experiment)
                 request.airavata_client.updateExperiment(
@@ -430,14 +433,12 @@ class ExperimentViewSet(mixins.CreateModelMixin,
     def _copy_experiment_input_uri(
             self,
             data_product_uri):
-        source_data_product = self.request.airavata_client.getDataProduct(
-            self.authz_token, data_product_uri)
-        if user_storage.exists(self.request, source_data_product):
+        if user_storage.exists(self.request, data_product_uri=data_product_uri):
             return user_storage.copy_input_file(
-                self.request, source_data_product)
+                self.request, data_product_uri=data_product_uri)
         else:
             log.warning("Could not find file for source data "
-                        "product {}".format(source_data_product))
+                        "product {}".format(data_product_uri))
             return None
 
     def _update_workspace_preferences(self, project_id,
@@ -472,7 +473,8 @@ class ExperimentSearchViewSet(mixins.ListModelMixin, GenericAPIBackedViewSet):
                     view.authz_token, view.gateway_id, view.username, filters,
                     limit, offset)
 
-        return ExperimentSearchResultIterator()
+        # Preserve query parameters when moving to next and previous links
+        return ExperimentSearchResultIterator(query_params=self.request.query_params.copy())
 
     def get_instance(self, lookup_value):
         raise NotImplementedError()
@@ -972,6 +974,19 @@ class DataProductView(APIView):
             data_product, context={'request': request})
         return Response(serializer.data)
 
+    def put(self, request, format=None):
+        data_product_uri = request.query_params['product-uri']
+        data_product = request.airavata_client.getDataProduct(
+            request.authz_token, data_product_uri)
+        if request.data and "fileContentText" in request.data:
+            user_storage.update_data_product_content(
+                request=request,
+                data_product=data_product,
+                fileContentText=request.data["fileContentText"])
+            return self.get(request=request, format=format)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(http_method_names=['POST'])
 def upload_input_file(request):
@@ -1413,36 +1428,7 @@ class CredentialSummaryViewSet(APIBackedViewSet):
                 self.authz_token, instance.token)
 
 
-class GatewayResourceProfileViewSet(APIBackedViewSet):
-    serializer_class = serializers.GatewayResourceProfileSerializer
-    lookup_field = 'gateway_id'
-
-    def get_list(self):
-        return self.request.airavata_client.getAllGatewayResourceProfiles(
-            self.authz_token)
-
-    def get_instance(self, lookup_value):
-        return self.request.airavata_client.getGatewayResourceProfile(
-            self.authz_token, lookup_value)
-
-    def perform_create(self, serializer):
-        gateway_resource_profile = serializer.save()
-        self.request.airavata_client.registerGatewayResourceProfile(
-            self.authz_token, gateway_resource_profile)
-
-    def perform_update(self, serializer):
-        gateway_resource_profile = serializer.save()
-        self.request.airavata_client.updateGatewayResourceProfile(
-            self.authz_token,
-            gateway_resource_profile.gatewayID,
-            gateway_resource_profile)
-
-    def perform_destroy(self, instance):
-        self.request.airavata_client.deleteGatewayResourceProfile(
-            self.authz_token, instance.gatewayID)
-
-
-class GetCurrentGatewayResourceProfile(APIView):
+class CurrentGatewayResourceProfile(APIView):
 
     def get(self, request, format=None):
         gateway_resource_profile = \
@@ -1451,6 +1437,19 @@ class GetCurrentGatewayResourceProfile(APIView):
         serializer = serializers.GatewayResourceProfileSerializer(
             gateway_resource_profile, context={'request': request})
         return Response(serializer.data)
+
+    def put(self, request, format=None):
+        serializer = serializers.GatewayResourceProfileSerializer(
+            data=request.data, context={'request': request})
+        if serializer.is_valid():
+            gateway_resource_profile = serializer.save()
+            request.airavata_client.updateGatewayResourceProfile(
+                request.authz_token,
+                settings.GATEWAY_ID,
+                gateway_resource_profile)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class StorageResourceViewSet(mixins.RetrieveModelMixin,
@@ -1569,7 +1568,7 @@ class UserStoragePathView(APIView):
                 path=path,
                 fileContentText=request.data["fileContentText"])
         else:
-            return Response(status=HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         return self._create_response(request=request, path=path)
 
@@ -1695,7 +1694,7 @@ class IAMUserViewSet(mixins.RetrieveModelMixin,
             def get_results(self, limit=-1, offset=0):
                 return map(convert_user_profile,
                            iam_admin_client.get_users(offset, limit, search))
-        return IAMUsersResultIterator()
+        return IAMUsersResultIterator(query_params=self.request.query_params.copy())
 
     def get_instance(self, lookup_value):
         return self._convert_user_profile(
@@ -1941,15 +1940,29 @@ def link_output_view(request):
     return JsonResponse(data)
 
 
+@api_view()
+def molecule_output_view(request):
+    data = _generate_output_view_data(request)
+    return Response(data)
+
+
+@api_view()
+def pdb_table_output_view(request):
+    data = _generate_output_view_data(request)
+    return Response(data)
+
+
 def _generate_output_view_data(request):
     params = request.GET.copy()
     provider_id = params.pop('provider-id')[0]
     experiment_id = params.pop('experiment-id')[0]
     experiment_output_name = params.pop('experiment-output-name')[0]
+    test_mode = ('test-mode' in params and params.pop('test-mode')[0] == "true")
     return output_views.generate_data(request,
                                       provider_id,
                                       experiment_output_name,
                                       experiment_id,
+                                      test_mode=test_mode,
                                       **params.dict())
 
 
