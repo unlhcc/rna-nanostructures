@@ -102,15 +102,12 @@ urlpatterns = [
         views.image_output_view, name="image-output"),
     url(r'^link-output',
         views.link_output_view, name="link-output"),
-<<<<<<< HEAD
     url(r'^pdb-validator',
         views.pdb_validation),
-=======
     url(r'^molecule-output',
         views.molecule_output_view, name="molecule-output"),
     url(r'^pdb-table-output',
         views.pdb_table_output_view, name="pdb-table-output"),
->>>>>>> 984fb5383814ed020e0e47b1e76100b324ce99fb
 ]
 
 urlpatterns = router.urls + format_suffix_patterns(urlpatterns)

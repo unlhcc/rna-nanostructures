@@ -30,9 +30,9 @@ def validate_pdb(file_name):
         
         return e
 
-
+#TODO: Fix with new changes
 class TestValidator(unittest.TestCase):
-
+    
     def setUp(self):
         print("Running test case on PDB Validator...")
 
