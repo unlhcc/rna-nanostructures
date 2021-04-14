@@ -17,6 +17,11 @@ export default class PDBFileValidator {
       }
       //run validation then get the returned values if NONE then return null else return error
       
+      // POST DataProductURI here
+
+      // GET Response from PDB Validator script
+
+      // Return response
       return null;      
     }
   
