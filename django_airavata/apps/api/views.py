@@ -1967,5 +1967,21 @@ def _generate_output_view_data(request):
 
 
 def pdb_validation(request):
-    #maybe use try catch here
-    return validate_pdb(request.file)
+    data_product_uri = request.GET['dataProductURI']
+    try:
+        data_product = request.airavata_client.getDataProduct(request.authz_token, data_product_uri)
+    except Exception as e:  # TODO: catch specific exception types
+        log.warning("Failed to load DataProduct for {}"
+                    .format(data_product_uri), exc_info=True)
+        raise Http404("data product does not exist") from e
+    try:
+        file = user_storage.open_file(request, data_product)
+        validation_error = validate_pdb(file)
+        return HttpResponse(json.dumps(
+            {
+                'okay': validation_error is None,
+                'reason': str(validation_error),
+            }
+        ))
+    except ObjectDoesNotExist as e:
+        raise Http404(str(e)) from e

@@ -18,16 +18,17 @@ except ImportError:
     ) from None
 
 
-def validate_pdb(file_name):
+def validate_pdb(file):
     try:
         parser = PDBParser(PERMISSIVE=0)
         structure_id = "inputFile"
-        filename = file_name
-        structure = parser.get_structure(structure_id, filename)
-
+        structure = parser.get_structure(structure_id, file)
         return None
     except (Exception) as e:
-        
+        # TODO: log traceback in a better way (or remove this logging code)
+        import traceback
+        traceback.print_exception(type(e), e, e.__traceback__)
+        # end TODO
         return e
 
 #TODO: Fix with new changes
@@ -103,7 +104,7 @@ class PDBParser:
             self.structure_builder.init_structure(id)
 
             with as_handle(file) as handle:
-                lines = handle.readlines()
+                lines = [line.decode() for line in handle.readlines()]
                 if not lines:
                     raise ValueError("Empty file.")
                 self._parse(lines)
