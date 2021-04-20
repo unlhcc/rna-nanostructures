@@ -1,6 +1,8 @@
 // InputEditorMixin: mixin for experiment InputEditors, provides basic v-model
 // and validation functionality and defines the basic props interface
 // (experimentInput and id).
+
+/* eslint-disable no-console */ //TODO
 import { models } from "django-airavata-api";
 export default {
   props: {
@@ -38,18 +40,41 @@ export default {
     //   },
     //   default: 'Validating Input...'
     // }
-
-    validationResults: function () {      
-      return new Promise(resolve => resolve(this.experimentInput.validate(this.data)));
+    validationResults: {      
+      get () {
+        let results = this.experimentInput.validate(this.data);
+        return {
+          "value": [new Promise(resolve => resolve(results.value[0]))]
+        };
+      },
+      default () {
+        return {
+          "value": ["Validating Input..."]
+        }
+      }
       // return this.experimentInput.validate(this.data);
     },
+    // validationResults: function () {      
+    //   return new Promise(resolve => resolve(this.experimentInput.validate(this.data)));
+
+    //   // return this.experimentInput.validate(this.data);
+    // },
     validationMessages: function () {
+      console.log('ValidationResults = ', this.validationResults["value"]); // TODO
+      console.log('ValidationResults return: ', "value" in this.validationResults ? this.validationResults["value"] : [])
       return "value" in this.validationResults
         ? this.validationResults["value"]
         : [];
     },
     valid: function () {
-      return this.validationMessages.length === 0;
+      console.log('ValidationMessage = ', this.validationMessages); // TODO
+      if (this.validationMessages)
+        return this.validationMessages.length === 0;
+      else
+        return false;
+      
+      // return true;
+      // return this.validationMessages.length === 0;
     },
     componentValidState: function () {
       if (this.inputHasBegun) {
