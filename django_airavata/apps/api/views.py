@@ -58,6 +58,8 @@ from . import (
     view_utils
 )
 
+from django_airavata.scripts.pdbParser import validate_pdb
+
 READ_PERMISSION_TYPE = '{}:READ'
 
 log = logging.getLogger(__name__)
@@ -1962,3 +1964,25 @@ def _generate_output_view_data(request):
                                       experiment_id,
                                       test_mode=test_mode,
                                       **params.dict())
+
+
+def pdb_validation(request):
+    data_product_uri = request.GET['dataProductURI']
+    try:
+        data_product = request.airavata_client.getDataProduct(request.authz_token, data_product_uri)
+    except Exception as e:  # TODO: catch specific exception types
+        log.warning("Failed to load DataProduct for {}"
+                    .format(data_product_uri), exc_info=True)
+        raise Http404("data product does not exist") from e
+    try:
+        file = user_storage.open_file(request, data_product)
+        validation_error = validate_pdb(file)
+        if validation_error is not None:
+            validation_error = str(validation_error)
+        return HttpResponse(json.dumps(
+            {
+                'reason': validation_error
+            }
+        ))
+    except ObjectDoesNotExist as e:
+        raise Http404(str(e)) from e
