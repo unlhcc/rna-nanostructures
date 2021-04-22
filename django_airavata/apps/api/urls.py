@@ -102,6 +102,8 @@ urlpatterns = [
         views.image_output_view, name="image-output"),
     url(r'^link-output',
         views.link_output_view, name="link-output"),
+    url(r'^pdb-validator',
+        views.pdb_validation),
     url(r'^molecule-output',
         views.molecule_output_view, name="molecule-output"),
     url(r'^pdb-table-output',

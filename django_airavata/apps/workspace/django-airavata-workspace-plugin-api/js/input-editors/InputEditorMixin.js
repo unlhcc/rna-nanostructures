@@ -1,6 +1,7 @@
 // InputEditorMixin: mixin for experiment InputEditors, provides basic v-model
 // and validation functionality and defines the basic props interface
 // (experimentInput and id).
+
 import { models } from "django-airavata-api";
 export default {
   props: {
@@ -30,9 +31,25 @@ export default {
       inputHasBegun: false,
     };
   },
-  computed: {
-    validationResults: function () {
-      return this.experimentInput.validate(this.data);
+  asyncComputed: {
+    validationResults: {      
+      get () {
+        let results = this.experimentInput.validate(this.data);
+        let value = []
+        if ("value" in results) {
+          value = Promise.all(results["value"]).then(
+            arr => arr.filter(x => x !== null)
+          )
+        }
+        return {
+          "value": value
+        };
+      },
+      default () {
+        return {
+          "value": []
+        }
+      }
     },
     validationMessages: function () {
       return "value" in this.validationResults
@@ -40,7 +57,10 @@ export default {
         : [];
     },
     valid: function () {
-      return this.validationMessages.length === 0;
+      if (this.validationMessages)
+        return this.validationMessages.length === 0;
+      else
+        return false;
     },
     componentValidState: function () {
       if (this.inputHasBegun) {
@@ -49,6 +69,8 @@ export default {
         return null;
       }
     },
+  },
+  computed: {
     editorConfig: function () {
       return this.experimentInput.editorConfig;
     },
@@ -76,5 +98,8 @@ export default {
     valid() {
       this.checkValidation();
     },
+    validationMessages() {
+      this.checkValidation();
+    }
   },
 };
