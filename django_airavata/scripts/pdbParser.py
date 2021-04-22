@@ -22,18 +22,18 @@ def validate_pdb(file):
     try:
         parser = PDBParser(PERMISSIVE=0)
         structure_id = "inputFile"
-        structure = parser.get_structure(structure_id, file)
+        parser.get_structure(structure_id, file)
         return None
     except (Exception) as e:
-        # TODO: log traceback in a better way (or remove this logging code)
-        import traceback
-        traceback.print_exception(type(e), e, e.__traceback__)
-        # end TODO
+        # # TODO: log traceback in a better way (or remove this logging code)
+        # import traceback
+        # traceback.print_exception(type(e), e, e.__traceback__)
+        # # end TODO
         return e
 
-#TODO: Fix with new changes
+
+# TODO: Fix with new changes
 class TestValidator(unittest.TestCase):
-    
     def setUp(self):
         print("Running test case on PDB Validator...")
 

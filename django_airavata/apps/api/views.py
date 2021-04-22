@@ -1977,10 +1977,11 @@ def pdb_validation(request):
     try:
         file = user_storage.open_file(request, data_product)
         validation_error = validate_pdb(file)
+        if validation_error is not None:
+            validation_error = str(validation_error)
         return HttpResponse(json.dumps(
             {
-                'okay': validation_error is None,
-                'reason': str(validation_error),
+                'reason': validation_error
             }
         ))
     except ObjectDoesNotExist as e:
