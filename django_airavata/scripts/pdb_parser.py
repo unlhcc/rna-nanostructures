@@ -144,9 +144,9 @@ class PDBParser:
                     pass
                 else:
                     raise PDBConstructionException(
-                        f'Name on line {i+1} of PDB formated incorrectly. '
+                        f'Atom name on line {i+1} of PDB is formated incorrectly. '
                         f'Received: "{fullname}". '
-                        'Expected a string name beginning with a letter.'
+                        'Expected an atom name beginning with a letter.'
                     )
                 # get rid of whitespace in atom names
                 split_list = fullname.split()
@@ -307,9 +307,9 @@ def validate_pdb(file):
     except PDBConstructionException as pbd_e:
         return (
             str(pbd_e) +
-            ' Expected something similar to: '
-            'ATOM      1  P     U A 144     -15.248 -78.665  '
-            '83.581  1.00100.21           P'
+            '\nExpected line formatting is as follows: '
+            '"ATOM    220  OP2   A A 153     -20.313 -77.715  '
+            '95.647  1.00 97.97           O1-"'
         )
 
     except Exception as e:
