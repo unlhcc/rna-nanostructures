@@ -1,3 +1,6 @@
+// Do not add whitespaces for feedback and feedbackMessages.
+// Using the style to preserve whitespaces from error messages
+// due to vue 3 limitations.
 <template>
   <b-form-group
     :label="label"
@@ -8,13 +11,9 @@
     <slot></slot>
     <template slot="invalid-feedback">
       <ul v-if="feedbackMessages && feedbackMessages.length > 1">
-        <li v-for="feedback in feedbackMessages" :key="feedback">
-          {{ feedback }}
-        </li>
+        <li v-for="feedback in feedbackMessages" :key="feedback" style="white-space: pre-wrap;">{{ feedback }}</li>
       </ul>
-      <div v-else-if="feedbackMessages && feedbackMessages.length === 1">
-        {{ feedbackMessages[0] }}
-      </div>
+      <div v-else-if="feedbackMessages && feedbackMessages.length === 1" style="white-space: pre-wrap;">{{ feedbackMessages[0] }}</div>
     </template>
     <linkify slot="description">{{ description }}</linkify>
   </b-form-group>
