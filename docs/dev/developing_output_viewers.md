@@ -1,14 +1,7 @@
 # Developing Custom Output Viewers
-The following documentation serves to provide information regarding the method of extending the existing front-end to support new custom output viewers. As a reference, information will be provided regarding the approach taken to develop the custom `Molecule Viewer` and the custom `Table Viewer` implemented for the RNA Nanostructures Science Gateway.
+The following documentation serves to provide information regarding the method of extending the existing front-end to support new custom output viewers. As a reference, information will be provided regarding the approach taken to develop the custom `Molecule Viewer` and the custom `Table Viewer` implemented for the RNA Nanostructures Science Gateway. This document serves to act as a set of instructions for developing a custom output viewer; however additional documentation regarding setup and testing of the custom output viewers can be found [here](https://github.com/cseseniordesign/rna-nanostructures/blob/master/docs/dev/custom_output_view_provider.md)
 
-1. For all viewers that will require any `npm` dependencies, the file `rna-nanostructures/django_airavata/apps/workspace/package.json` should be updated to include the respective package and the version to be used in the application. For all viewers that will require non-npm-based dependences (e.g., GLMol), update the `rna-nanostructures/django_airavata/apps/workspace/templates/django_airavata_workspace/view_experiment.html` file to extend the base file with the desired imports.
-    * Add a block similar to the following with the necessary information for your dependency. Note that `YourImport` should be updated to the name of the import and the paths should be replaced with the path to the import provied
-        * ```html
-          {% block YourImport %}
-              <link rel="stylesheet" href="path/to/your/css/import.css" type="text/css">
-              <script type="text/javascript" src="path/to/your/javascript/import.js"></script>
-          {% endblock %}
-          ```
+1. For all viewers that will require any `npm` dependencies, the file `rna-nanostructures/django_airavata/apps/workspace/package.json` should be updated to include the respective package and the version to be used in the application. This can be done by using the command `yarn add dependency` where `dependency` is the name of the `npm` package name within the location `rna-nanostructures/django_airavata/apps/workspace`.
 2. Update the `views.py` to support the new custom output viewer by collecting the required data from the server
     * Navigate to the `rna-nanostructures/django_airavata/apps/api/views.py` file
     * Add a new API View method by following the below pattern. This should be appended to the end of the file (near approximately line 1967).
