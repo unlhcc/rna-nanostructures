@@ -3,7 +3,7 @@ The following documentation serves to provide information regarding the method o
 
 1. For all viewers that will require any `npm` dependencies, the file `rna-nanostructures/django_airavata/apps/workspace/package.json` should be updated to include the respective package and the version to be used in the application. For all viewers that will require non-npm-based dependences (e.g., GLMol), update the `rna-nanostructures/django_airavata/apps/workspace/templates/django_airavata_workspace/view_experiment.html` file to extend the base file with the desired imports.
     * Add a block similar to the following with the necessary information for your dependency. Note that `YourImport` should be updated to the name of the import and the paths should be replaced with the path to the import provied
-        * ```
+        * ```html
           {% block YourImport %}
               <link rel="stylesheet" href="path/to/your/css/import.css" type="text/css">
               <script type="text/javascript" src="path/to/your/javascript/import.js"></script>
@@ -12,7 +12,7 @@ The following documentation serves to provide information regarding the method o
 2. Update the `views.py` to support the new custom output viewer by collecting the required data from the server
     * Navigate to the `rna-nanostructures/django_airavata/apps/api/views.py` file
     * Add a new API View method by following the below pattern. This should be appended to the end of the file (near approximately line 1967).
-        * ```
+        * ```python
           @api_view()
           def your_new_custom_output_view(request):
               data = _generate_output_view_data(request)
@@ -31,7 +31,7 @@ The following documentation serves to provide information regarding the method o
     * Update the imports specified on approximately lines 31-41 to include the file created in Step 4. The name of the class imported from the file should be equivalent to the name of the file, but the `.vue` element will be removed.
     * Update the `components` on approximately lines 64-74 to include the imported class specified in the previous step
     * Append a new data type to the `displayTypeData()` object on approximately line 96 using the following format where the name of the component is equivalent to the component name previously specified; however, the name formatting should be modifed to be dash-separated lowercase.
-        * ```
+        * ```javascript
           custom_output: {
             component: "your-custom-output-display",
             url: "/api/your-new-custom-output/",
@@ -40,7 +40,7 @@ The following documentation serves to provide information regarding the method o
 6. Implement an output view provider to enable access to the output view implementation
     * Navigate to the `rna-nanostructures/django_airavata/apps/api/output_views.py` file
     * Implement a new output view provider by creating a dictionary with the desired elements. For situations requiring an output file, the `output_file` parameter has been provided. The following code snippet provides reference to the approach that may be taken to implement this provider.
-        * ```
+        * ```python
           class YourCustomViewProvider:
             display_type = 'custom_output'
             name = 'Your Custom Output'
