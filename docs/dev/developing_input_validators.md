@@ -143,4 +143,23 @@ The following instructions serve to discuss the approach that should be taken to
                 })
             }
           }
-6. TODO: Discuss setup/config
+6. Now with this all of the setup complete to add the file validation: 
+    * start the application and navigate to the settings screen and then to the application you wish to edit.
+    * Once in the settings screen, select the application that you want to add validation to.
+    * Now navigate to interface.
+    * In the Input fields section make sure the input type is URI
+    * For the validation add in the Advanced Input Field Modification Metadata section:
+        * ```json
+            {
+                "editor": {
+                    "validations": [
+                        {
+                            "type": "custom_validator"
+                        }
+                    ]
+                }
+            }
+          ```
+          **NOTE:** The "custom_validator" would change to be name given in the validatorFacotry
+    * Click save at the bottem.
+    * Now the validator should be added to that input of the application
