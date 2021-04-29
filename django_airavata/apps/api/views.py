@@ -58,7 +58,7 @@ from . import (
     view_utils
 )
 
-from django_airavata.scripts.pdbParser import validate_pdb
+from django_airavata.scripts.pdb_parser import validate_pdb
 
 READ_PERMISSION_TYPE = '{}:READ'
 
