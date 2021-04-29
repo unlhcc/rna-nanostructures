@@ -163,3 +163,4 @@ The following instructions serve to discuss the approach that should be taken to
           **NOTE:** The "custom_validator" would change to be name given in the validatorFacotry
     * Click save at the bottem.
     * Now the validator should be added to that input of the application
+    * **NOTE:** for more information about app inputs checkout: https://github.com/cseseniordesign/rna-nanostructures/blob/documentation/docs/admin/app_inputs.md
